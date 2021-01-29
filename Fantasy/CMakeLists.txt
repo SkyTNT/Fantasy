@@ -1,0 +1,31 @@
+cmake_minimum_required(VERSION 3.10)
+project(Fantasy)
+
+set(CMAKE_CXX_STANDARD 14)
+if (CMAKE_SYSTEM_NAME MATCHES "Android")
+    include_directories(. 3rd/glm/include 3rd/glfm/include 3rd/stb)
+    add_subdirectory(3rd/glfm)
+else()
+    set(CMAKE_EXE_LINKER_FLAGS -static)
+    include_directories(. 3rd/glad/include 3rd/glfw/include 3rd/glm/include 3rd/stb)
+    link_directories(3rd/glfw/lib)
+endif()
+
+add_subdirectory(client)
+add_subdirectory(game)
+add_subdirectory(thread)
+add_subdirectory(utils)
+
+if (CMAKE_SYSTEM_NAME MATCHES "Android")
+    add_library(Fantasy SHARED main_android.cpp)
+else()
+    file(COPY asset DESTINATION ./)
+    add_executable(Fantasy main.cpp 3rd/glad/src/glad.c)
+endif()
+
+if (CMAKE_SYSTEM_NAME MATCHES "Android")
+    target_link_libraries(Fantasy client game thread utils glfm)
+else()
+    target_link_libraries(Fantasy client game thread utils)
+endif()
+
