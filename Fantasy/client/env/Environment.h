@@ -1,5 +1,5 @@
 #pragma once
-#include "../../client/input/Input.h"
+#include <string>
 
 namespace Env {
 	//绘制类型
@@ -29,13 +29,6 @@ class Environment
 public:
 	Environment();
 	virtual ~Environment();
-
-	Input* getInput();
-
-	//设置退出
-	void exit();
-	//判断环境是否退出
-	bool needExit();
 
 	//建立环境
 	virtual bool setup(void *args) = 0;
@@ -89,9 +82,4 @@ public:
 	virtual void writeElementBuffer(unsigned int buffer, size_t dataSize, void* offset, void* data) = 0;
 	//复制一个索引缓冲对象到了另一个索引缓冲对象
 	virtual void copyElementBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, void* sourceOffset, void* targetOffset, size_t size) = 0;
-
-protected:
-	Input* input;
-private:
-	bool nExit;
 };

@@ -7,12 +7,13 @@ static GameClient* mClient;
 GameClient::GameClient():exiting(false),width(0),height(0),lastTime(0)
 {
 	mClient = this;
+	input=new Input();
 }
 
 
 GameClient::~GameClient()
 {
-
+    delete input;
 }
 
 
@@ -53,7 +54,6 @@ void GameClient::init(Environment * env)
 	this->env = env;
 
 	//设置输入回调
-	Input* input = env->getInput();
 	input->setKeyCallBack([this](int code, int mods, int action) {
 		onKeyEvent(code, mods, action);
 	});
@@ -139,12 +139,17 @@ void GameClient::render()
 	env->renderEnd();
 }
 
+Input *GameClient::getInput() {
+    return input;
+}
+
 bool GameClient::needExiting()
 {
-	return exiting||env->needExit();
+	return exiting;
 }
 
 GameClient* GameClient::getGameClient()
 {
 	return mClient;
 }
+
