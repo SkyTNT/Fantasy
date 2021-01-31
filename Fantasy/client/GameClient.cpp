@@ -23,19 +23,6 @@ void GameClient::exit()
 	onExit();
 }
 
-const char *vertexShaderSource = "#version 300 es\n"
-                                 "layout (location = 0) in vec3 aPos;\n"
-                                 "void main()\n"
-                                 "{\n"
-                                 "   gl_Position = vec4(aPos.x, aPos.y, aPos.z, 1.0);\n"
-                                 "}\0";
-const char *fragmentShaderSource = "#version 300 es\n"
-                                   "out mediump  vec4 FragColor;\n"
-                                   "void main()\n"
-                                   "{\n"
-                                   "   FragColor = vec4(1.0f, 0.5f, 0.2f, 1.0f);\n"
-                                   "}\n\0";
-
 unsigned int shader,vao,vbo,ebo;
 
 float vertices[] = {
@@ -63,8 +50,7 @@ void GameClient::init(Environment * env)
 	input->setMouseMoveCallBack([this](float x, float y) {
 		onMouseMove(x, y);
 	});
-	shader = env->createShader(vertexShaderSource, fragmentShaderSource);
-
+	shader = env->createShader(load_asset("tr.vert"), load_asset("tr.frag"));
 	vao = env->createObject();
 	vbo = env->createVertexBuffer(sizeof(vertices), vertices);
 	ebo = env->createElementBuffer(sizeof(indices), indices);

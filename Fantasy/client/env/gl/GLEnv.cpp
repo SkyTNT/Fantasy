@@ -83,6 +83,13 @@ void GLEnv::renderEnd() {
 }
 
 unsigned int GLEnv::createShader(std::string vertexShader, std::string fragmentShader) {
+#ifdef __ANDROID__
+    vertexShader="#version 300 es\n"+vertexShader;
+    fragmentShader="#version 300 es\nprecision highp float;\n"+fragmentShader;
+#else
+    vertexShader="#version 330 core\n"+vertexShader;
+    fragmentShader="#version 330 core\n"+fragmentShader;
+#endif
     const int logMaxLen = 1024;
     const char *vsc = vertexShader.c_str();
     const char *fsc = fragmentShader.c_str();
