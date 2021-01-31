@@ -120,7 +120,10 @@ void GameClient::tick()
 void GameClient::render()
 {
 	env->renderStart();
+	env->clearColor(glm::vec4(1,1,1,1));
 	env->useShader(shader);
+    float greenValue = (sin(lastTime/1000.0f) / 2.0f) + 0.5f;
+    env->setUniform(shader,"ourColor",glm::vec4(0,0,greenValue,1));
 	env->drawObject(vao, 6, Env::DrawType::Triangle);
 	env->renderEnd();
 }

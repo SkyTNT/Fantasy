@@ -1,12 +1,13 @@
 #pragma once
 #include <string>
+#include <glm/glm.hpp>
 
 namespace Env {
 	//绘制类型
 	struct DrawType
 	{
 		enum Enum {
-			Point,//点绘制
+			Point = 0,//点绘制
 			Line,//单独线条绘制
 			LineStrip,//折线绘制
 			LineLoop,//闭合折线绘制
@@ -19,7 +20,7 @@ namespace Env {
 	struct AttribType
 	{
 		enum Enum {
-			Float,//float
+			Float = 0,//float
 		};
 	};
 }
@@ -45,6 +46,8 @@ public:
 	virtual void renderStart() = 0;
 	//每次渲染结尾函数
 	virtual void renderEnd() = 0;
+	//清屏色
+	virtual void clearColor(glm::vec4 rgba) = 0;
 
 	//创建着色器程序（顶点着色器代码，片段着色器代码）
 	virtual unsigned int createShader(std::string vertexShader, std::string fragmentShader) = 0;
@@ -52,9 +55,22 @@ public:
 	virtual void useShader(unsigned int shader) = 0;
 	//删除着色器
 	virtual void delShader(unsigned int shader) = 0;
+	//设置着色器中的uniform变量
+	virtual void setUniform(unsigned int shader, std::string name, float val) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::vec2 val) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::vec3 val) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::vec4 val) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat2 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat2x3 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat2x4 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat3 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat3x2 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat3x4 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat4 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat4x2 val,bool transpose) = 0;
+    virtual void setUniform(unsigned int shader, std::string name,glm::mat4x3 val,bool transpose) = 0;
 
-
-	//创建物体
+    //创建物体
 	virtual unsigned int createObject() = 0;
 	//删除物体
 	virtual void delObject(unsigned int obj) = 0;
@@ -62,7 +78,7 @@ public:
 	virtual void objBindBuffer(unsigned int obj, unsigned int vertexBuffer, unsigned int elementBuffer) = 0;
 	//设置顶点属性的布局，location:顶点属性在shader中的位置，num:顶点属性包含的数据个数，type:顶点属性数据类型,siride:步长即到下一个相同顶点属性间隔，offset：顶点属性与开头的偏移，normalize：是否标准化
 	virtual void objSetVertexLayout(unsigned int obj, unsigned int location, unsigned int num, Env::AttribType::Enum type, size_t stride, void* offset, bool normalize) = 0;
-	//以type的绘制方式绘制obj
+	//绘制obj
 	virtual void drawObject(unsigned int obj, unsigned int count, Env::DrawType::Enum type) = 0;
 
 	//创建顶点缓冲对象

@@ -10,14 +10,31 @@ public:
 
 	bool setup(void *args) override;
 	void cleanup() override;
+
 	void windowResize(int width, int height) override;
 	int getWindowWidth() override;
 	int getWindowHeight() override;
+
 	void renderStart() override;
 	void renderEnd() override;
+    void clearColor(glm::vec4 rgba) override;
+
 	unsigned int createShader(std::string vertexShader, std::string fragmentShader) override;
 	void useShader(unsigned int shader) override;
 	void delShader(unsigned int shader) override;
+    void setUniform(unsigned int shader, std::string name, float val) override;
+    void setUniform(unsigned int shader, std::string name,glm::vec2 val) override;
+    void setUniform(unsigned int shader, std::string name,glm::vec3 val) override;
+    void setUniform(unsigned int shader, std::string name,glm::vec4 val) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat2 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat2x3 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat2x4 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat3 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat3x2 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat3x4 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat4 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat4x2 val,bool transpose) override;
+    void setUniform(unsigned int shader, std::string name,glm::mat4x3 val,bool transpose) override;
 
 	unsigned int createObject() override;
 	void delObject(unsigned int obj) override;

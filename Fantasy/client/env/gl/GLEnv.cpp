@@ -12,12 +12,9 @@
 #include <utils/Utils.h>
 #include "GLEnv.h"
 
-
-//禁用控制台
-//#pragma comment( linker, "/subsystem:windows /entry:mainCRTStartup" )
-
 static GLEnv *env;
 static glm::ivec2 windowSize;
+static int drawTypeMap[20],attribTypeMap[20];
 
 #ifdef __ANDROID__
 static GLFMDisplay *mDisplay;
@@ -39,11 +36,23 @@ bool GLEnv::setup(void *args) {
 
 #else
     window = (GLFWwindow *) args;
+    //初始化opengl扩展
     if (!gladLoadGLLoader((GLADloadproc) glfwGetProcAddress)) {
         LOG_E("Env", "Failed to initialize opengl ");
         return false;
     }
 #endif
+    //初始化绘制类型的映射
+    drawTypeMap[Env::DrawType::Point]=GL_POINTS;
+    drawTypeMap[Env::DrawType::Line]=GL_LINES;
+    drawTypeMap[Env::DrawType::LineStrip]=GL_LINE_STRIP;
+    drawTypeMap[Env::DrawType::LineLoop]=GL_LINE_LOOP;
+    drawTypeMap[Env::DrawType::Triangle]=GL_TRIANGLES;
+    drawTypeMap[Env::DrawType::TriangleStrip]=GL_TRIANGLE_STRIP;
+    drawTypeMap[Env::DrawType::TriangleFan]=GL_TRIANGLE_FAN;
+    //顶点属性类型映射
+    attribTypeMap[Env::AttribType::Float]=GL_FLOAT;
+
     return true;
 }
 
@@ -69,8 +78,6 @@ int GLEnv::getWindowHeight() {
 }
 
 void GLEnv::renderStart() {
-    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
 }
 
 void GLEnv::renderEnd() {
@@ -80,6 +87,11 @@ void GLEnv::renderEnd() {
     glfwPollEvents();
     glfwSwapBuffers(window);
 #endif
+}
+
+void GLEnv::clearColor(glm::vec4 rgba) {
+    glClearColor(rgba.r, rgba.g, rgba.b, rgba.a);
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 
 unsigned int GLEnv::createShader(std::string vertexShader, std::string fragmentShader) {
@@ -143,6 +155,67 @@ void GLEnv::delShader(unsigned int shader) {
     glDeleteProgram(shader);
 }
 
+void GLEnv::setUniform(unsigned int shader, std::string name, float val) {
+    int location = glGetUniformLocation(shader, name.c_str());
+    glUniform1f(location,val);
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::vec2 val) {
+    int location = glGetUniformLocation(shader, name.c_str());
+    glUniform2fv(location,1,&val[0]);
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::vec3 val) {
+    int location = glGetUniformLocation(shader, name.c_str());
+    glUniform3fv(location,1,&val[0]);
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::vec4 val) {
+    int location = glGetUniformLocation(shader, name.c_str());
+    glUniform4fv(location,1,&val[0]);
+}
+
+#define __setMatrix(size)   int location = glGetUniformLocation(shader, name.c_str());\
+                            glUniformMatrix##size##fv(location,1,transpose,&val[0][0]);
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat2 val,bool transpose) {
+    __setMatrix(2)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat2x3 val,bool transpose) {
+    __setMatrix(2x3)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat2x4 val,bool transpose) {
+    __setMatrix(2x4)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat3 val,bool transpose) {
+    __setMatrix(3)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat3x2 val,bool transpose) {
+    __setMatrix(3x2)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat3x4 val,bool transpose) {
+    __setMatrix(3x4)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat4 val,bool transpose) {
+    __setMatrix(4)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat4x2 val,bool transpose) {
+    __setMatrix(4x2)
+}
+
+void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat4x3 val,bool transpose) {
+    __setMatrix(4x3)
+}
+
+#undef __setMatrix
+
 unsigned int GLEnv::createObject() {
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
@@ -162,54 +235,16 @@ void GLEnv::objBindBuffer(unsigned int obj, unsigned int vertexBuffer, unsigned 
 
 void GLEnv::objSetVertexLayout(unsigned int obj, unsigned int location, unsigned int num, Env::AttribType::Enum type,
                                size_t stride, void *offset, bool normalize) {
-    unsigned int glType = 0;
-    switch (type) {
-        case Env::AttribType::Float:
-            glType = GL_FLOAT;
-            break;
-        default:
-            LOG_E("Env", "AttribType Error, location " + i2s(location));
-            return;
-            break;
-    }
 
     glBindVertexArray(obj);
-    glVertexAttribPointer(location, num, glType, normalize, stride, offset);
+    glVertexAttribPointer(location, num, attribTypeMap[type], normalize, stride, offset);
     glEnableVertexAttribArray(location);
     glBindVertexArray(0);
 }
 
 void GLEnv::drawObject(unsigned int obj, unsigned int count, Env::DrawType::Enum type) {
-    unsigned int glType = 0;
-    switch (type) {
-        case Env::DrawType::Point:
-            glType = GL_POINTS;
-            break;
-        case Env::DrawType::Line:
-            glType = GL_LINES;
-            break;
-        case Env::DrawType::LineStrip:
-            glType = GL_LINE_STRIP;
-            break;
-        case Env::DrawType::LineLoop:
-            glType = GL_LINE_LOOP;
-            break;
-        case Env::DrawType::Triangle:
-            glType = GL_TRIANGLES;
-            break;
-        case Env::DrawType::TriangleStrip:
-            glType = GL_TRIANGLE_STRIP;
-            break;
-        case Env::DrawType::TriangleFan:
-            glType = GL_TRIANGLE_FAN;
-            break;
-        default:
-            LOG_E("Env", "DrawType Error ");
-            return;
-            break;
-    }
     glBindVertexArray(obj);
-    glDrawElements(glType, count, GL_UNSIGNED_INT, 0);
+    glDrawElements(drawTypeMap[type], count, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 
@@ -272,4 +307,5 @@ GLEnv::copyElementBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, v
     glBindBuffer(GL_COPY_WRITE_BUFFER, 0);
     glBindBuffer(GL_COPY_READ_BUFFER, 0);
 }
+
 

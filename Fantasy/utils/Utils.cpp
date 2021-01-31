@@ -165,7 +165,7 @@ string load_asset(string path){
 #ifdef __ANDROID__
 	file = _fc_android_fopen(path.c_str(), "rb");
 #else
-	file =fopen(("assets/"+path).c_str(), "rb");
+	file =fopen(("../assets/"+path).c_str(), "rb");
 #endif
 	if (file) {
 		fseek(file, 0, SEEK_END);

@@ -5,6 +5,9 @@
 #include <client/env/gl/GLEnv.h>
 #include <utils/Utils.h>
 
+//½ûÓÃ¿ØÖÆÌ¨
+//#pragma comment( linker, "/subsystem:windows /entry:mainCRTStartup" )
+
 static GLEnv *env;
 static GLFWwindow* window;
 static GameClient *mClient;
