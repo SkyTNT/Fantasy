@@ -14,7 +14,7 @@
 
 static GLEnv *env;
 static glm::ivec2 windowSize;
-static int drawTypeMap[20],attribTypeMap[20];
+static int drawTypeMap[20], attribTypeMap[20], colorTypeMap[20], wrapTypeMap[20], filterTypeMap[20];
 
 #ifdef __ANDROID__
 static GLFMDisplay *mDisplay;
@@ -43,15 +43,26 @@ bool GLEnv::setup(void *args) {
     }
 #endif
     //初始化绘制类型的映射
-    drawTypeMap[Env::DrawType::Point]=GL_POINTS;
-    drawTypeMap[Env::DrawType::Line]=GL_LINES;
-    drawTypeMap[Env::DrawType::LineStrip]=GL_LINE_STRIP;
-    drawTypeMap[Env::DrawType::LineLoop]=GL_LINE_LOOP;
-    drawTypeMap[Env::DrawType::Triangle]=GL_TRIANGLES;
-    drawTypeMap[Env::DrawType::TriangleStrip]=GL_TRIANGLE_STRIP;
-    drawTypeMap[Env::DrawType::TriangleFan]=GL_TRIANGLE_FAN;
+    drawTypeMap[Env::DrawType::Point] = GL_POINTS;
+    drawTypeMap[Env::DrawType::Line] = GL_LINES;
+    drawTypeMap[Env::DrawType::LineStrip] = GL_LINE_STRIP;
+    drawTypeMap[Env::DrawType::LineLoop] = GL_LINE_LOOP;
+    drawTypeMap[Env::DrawType::Triangle] = GL_TRIANGLES;
+    drawTypeMap[Env::DrawType::TriangleStrip] = GL_TRIANGLE_STRIP;
+    drawTypeMap[Env::DrawType::TriangleFan] = GL_TRIANGLE_FAN;
     //顶点属性类型映射
-    attribTypeMap[Env::AttribType::Float]=GL_FLOAT;
+    attribTypeMap[Env::AttribType::Float] = GL_FLOAT;
+
+    colorTypeMap[Env::ColorType::RGB] = GL_RGB;
+    colorTypeMap[Env::ColorType::RGBA] = GL_RGBA;
+
+    wrapTypeMap[Env::WrapType::Repeat] = GL_REPEAT;
+    wrapTypeMap[Env::WrapType::MirroredRepeat] = GL_MIRRORED_REPEAT;
+    wrapTypeMap[Env::WrapType::ClampToEdge] = GL_CLAMP_TO_EDGE;
+
+    filterTypeMap[Env::FilterType::Linear] = GL_LINEAR;
+    filterTypeMap[Env::FilterType::Nearest] = GL_NEAREST;
+
 
     return true;
 }
@@ -99,8 +110,8 @@ unsigned int GLEnv::createShader(std::string vertexShader, std::string fragmentS
     vertexShader="#version 300 es\n"+vertexShader;
     fragmentShader="#version 300 es\nprecision highp float;\n"+fragmentShader;
 #else
-    vertexShader="#version 330 core\n"+vertexShader;
-    fragmentShader="#version 330 core\n"+fragmentShader;
+    vertexShader = "#version 330 core\n" + vertexShader;
+    fragmentShader = "#version 330 core\n" + fragmentShader;
 #endif
     const int logMaxLen = 1024;
     const char *vsc = vertexShader.c_str();
@@ -155,70 +166,110 @@ void GLEnv::delShader(unsigned int shader) {
     glDeleteProgram(shader);
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, float val) {
+void GLEnv::setUniform(unsigned int shader, const string &name, float val) {
     int location = glGetUniformLocation(shader, name.c_str());
-    glUniform1f(location,val);
+    glUniform1f(location, val);
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::vec2 val) {
+void GLEnv::setUniform(unsigned int shader, const string &name, const glm::vec2 &val) {
     int location = glGetUniformLocation(shader, name.c_str());
-    glUniform2fv(location,1,&val[0]);
+    glUniform2fv(location, 1, &val[0]);
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::vec3 val) {
+void GLEnv::setUniform(unsigned int shader, const string &name, const glm::vec3 &val) {
     int location = glGetUniformLocation(shader, name.c_str());
-    glUniform3fv(location,1,&val[0]);
+    glUniform3fv(location, 1, &val[0]);
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::vec4 val) {
+void GLEnv::setUniform(unsigned int shader, const string &name, const glm::vec4 &val) {
     int location = glGetUniformLocation(shader, name.c_str());
-    glUniform4fv(location,1,&val[0]);
+    glUniform4fv(location, 1, &val[0]);
 }
 
 #define __setMatrix(size)   int location = glGetUniformLocation(shader, name.c_str());\
                             glUniformMatrix##size##fv(location,1,transpose,&val[0][0]);
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat2 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat2 &val, bool transpose) {
     __setMatrix(2)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat2x3 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat2x3 &val, bool transpose) {
     __setMatrix(2x3)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat2x4 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat2x4 &val, bool transpose) {
     __setMatrix(2x4)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat3 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat3 &val, bool transpose) {
     __setMatrix(3)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat3x2 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat3x2 &val, bool transpose) {
     __setMatrix(3x2)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat3x4 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat3x4 &val, bool transpose) {
     __setMatrix(3x4)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat4 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat4 &val, bool transpose) {
     __setMatrix(4)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat4x2 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat4x2 &val, bool transpose) {
     __setMatrix(4x2)
 }
 
-void GLEnv::setUniform(unsigned int shader, std::string name, glm::mat4x3 val,bool transpose) {
+void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val, bool transpose) {
     __setMatrix(4x3)
 }
 
 #undef __setMatrix
 
+void GLEnv::setTexture(unsigned int shader, const string &name, unsigned int index) {
+    glUniform1i(glGetUniformLocation(shader, name.c_str()), index);
+}
+
+void GLEnv::bindTexture2D(unsigned int index, unsigned int texture) {
+    glActiveTexture(GL_TEXTURE0 + index);
+    glBindTexture(GL_TEXTURE_2D, texture);
+}
+
+unsigned int GLEnv::createTexture2D(Env::ColorType::Enum colorType, int width, int height, unsigned char *data) {
+    unsigned int texture;
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexImage2D(GL_TEXTURE_2D, 0, colorTypeMap[colorType], width, height, 0, colorTypeMap[colorType], GL_UNSIGNED_BYTE,
+                 data);
+    glGenerateMipmap(GL_TEXTURE_2D);
+    glBindTexture(GL_TEXTURE_2D, 0);
+
+    return texture;
+}
+
+void GLEnv::setTexture2DWrap(unsigned int texture, Env::WrapType::Enum wrapType) {
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapTypeMap[wrapType]);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapTypeMap[wrapType]);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
+void GLEnv::setTexture2DFilter(unsigned int texture, Env::FilterType::Enum filterType) {
+    glBindTexture(GL_TEXTURE_2D, texture);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterTypeMap[filterType]);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterTypeMap[filterType]);
+    glBindTexture(GL_TEXTURE_2D, 0);
+}
+
 unsigned int GLEnv::createObject() {
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
+
     return VAO;
 }
 
@@ -307,5 +358,3 @@ GLEnv::copyElementBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, v
     glBindBuffer(GL_COPY_WRITE_BUFFER, 0);
     glBindBuffer(GL_COPY_READ_BUFFER, 0);
 }
-
-
