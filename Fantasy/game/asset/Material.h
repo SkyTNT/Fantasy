@@ -1,15 +1,36 @@
 #pragma once
 #include <map>
+#include <vector>
 #include <string>
 #include <glm/glm.hpp>
-#include <env/Environment.h>
+#include "Shader.h"
+#include "Texture2D.h"
 
 class Material {
 public:
-    Material();
+    explicit Material(Shader* shader);
+    ~Material();
+
+    void set(const std::string &name,float val);
+    void set(const std::string &name,const glm::vec2 &val);
+    void set(const std::string &name,const glm::vec3 &val);
+    void set(const std::string &name,const glm::vec4 &val);
+    void set(const std::string &name,const glm::mat2 &val);
+    void set(const std::string &name,const glm::mat2x3 &val);
+    void set(const std::string &name,const glm::mat2x4 &val);
+    void set(const std::string &name,const glm::mat3 &val);
+    void set(const std::string &name,const glm::mat3x2 &val);
+    void set(const std::string &name,const glm::mat3x4 &val);
+    void set(const std::string &name,const glm::mat4 &val);
+    void set(const std::string &name,const glm::mat4x2 &val);
+    void set(const std::string &name,const glm::mat4x3 &val);
+    void set(const std::string &name,const Texture2D &val);
+
+    void use();
 
 private:
-    unsigned int shader;
+    Shader* shader;
+    unsigned int shaderID;
     std::map<std::string, float>floatUniforms;
     std::map<std::string, glm::vec2>vec2Uniforms;
     std::map<std::string, glm::vec3>vec3Uniforms;
@@ -23,5 +44,7 @@ private:
     std::map<std::string, glm::mat4>mat4Uniforms;
     std::map<std::string, glm::mat4x2>mat4x2Uniforms;
     std::map<std::string, glm::mat4x3>mat4x3Uniforms;
+    std::map<std::string, int>texture2DIndex;
+    std::vector<Texture2D> texture2Ds;
 };
 

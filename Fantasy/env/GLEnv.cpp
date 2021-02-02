@@ -244,6 +244,10 @@ unsigned int Env::createTexture2D(Env::ColorType::Enum colorType, int width, int
     return texture;
 }
 
+void Env::delTexture2D(unsigned int texture){
+    glDeleteTextures(1,&texture);
+}
+
 void Env::setTexture2DWrap(unsigned int texture, Env::WrapType::Enum wrapType) {
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapTypeMap[wrapType]);

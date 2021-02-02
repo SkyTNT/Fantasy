@@ -22,14 +22,16 @@ namespace Env {
             Float,//float
         };
     };
+    //纹理环绕方式
     struct WrapType {
         enum Enum {
-            Repeat,
-            MirroredRepeat,
-            ClampToEdge,
+            Repeat,//重复
+            MirroredRepeat,//镜像重复
+            ClampToEdge,//边缘拉伸
         };
     };
 
+    //颜色格式
     struct ColorType {
         enum Enum {
             RGB,
@@ -37,10 +39,11 @@ namespace Env {
         };
     };
 
+    //纹理过滤方式
     struct FilterType {
         enum Enum {
-            Nearest,
-            Linear
+            Nearest,//邻近过滤
+            Linear//邻近过滤
         };
     };
 
@@ -103,16 +106,24 @@ namespace Env {
 
     void setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val, bool transpose);
 
+    //设置着色器中纹理为指定index
     void setTexture(unsigned int shader, const std::string &name, unsigned int index);
 
+    //绑定纹理到指定index
     void bindTexture2D(unsigned int index, unsigned int texture);
 
+    //创建纹理，colorType:纹理色彩格式，data:纹理的数据
     unsigned int
     createTexture2D(Env::ColorType::Enum colorType, int width, int height, unsigned char *data);
 
+    //删除纹理
+    void delTexture2D(unsigned int texture);
+
+    //纹理环绕方式
     void
     setTexture2DWrap(unsigned int texture, Env::WrapType::Enum wrapType);
 
+    //纹理过滤
     void setTexture2DFilter(unsigned int texture, Env::FilterType::Enum filterType);
 
     //创建物体

@@ -4,9 +4,10 @@
 #define STB_IMAGE_IMPLEMENTATION
 #include <stb_image.h>
 #include <game/asset/Shader.h>
+#include <game/asset/Material.h>
 
 static GameClient *mClient;
-Shader *shader;
+
 GameClient::GameClient() : exiting(false), width(0), height(0), lastTime(0) {
     mClient = this;
     input = new Input();
@@ -23,8 +24,10 @@ void GameClient::exit() {
     exiting = true;
 }
 
-unsigned int  vao, vbo, ebo,texture0;
-
+unsigned int  vao, vbo, ebo;
+Shader *shader;
+Texture2D *texture2D;
+Material *material;
 
 float vertices[] = {
         0.5f, 0.5f, 0.0f, 1, 0, 0, 1, 0,  // top right
@@ -50,6 +53,7 @@ void GameClient::init() {
         onMouseMove(x, y);
     });
     shader = new Shader("tr.vert","tr.frag");
+    material=new Material(shader);
     vao = Env::createObject();
     vbo = Env::createVertexBuffer(sizeof(vertices), vertices);
     ebo = Env::createElementBuffer(sizeof(indices), indices);
@@ -57,16 +61,8 @@ void GameClient::init() {
     Env::objSetVertexLayout(vao, 0, 3, Env::AttribType::Float, 8 * sizeof(float), 0, false);
     Env::objSetVertexLayout(vao, 1, 3, Env::AttribType::Float, 8 * sizeof(float), (void *) (3 * sizeof(float)), false);
     Env::objSetVertexLayout(vao, 2, 2, Env::AttribType::Float, 8 * sizeof(float), (void *) (6 * sizeof(float)), false);
-    int tWidth, tHeight, nrChannels;
-    unsigned char *data = stbi_load("../assets/wall.jpg", &tWidth, &tHeight, &nrChannels, 0);
-    if (data)
-        texture0=Env::createTexture2D(Env::ColorType::RGB,tWidth,tHeight,data);
-    else
-        LOG_E("File","texture load failed");
-    stbi_image_free(data);
-    Env::useShader(shader->getShader());
-    Env::setTexture(shader->getShader(),"texture0",0);
-    Env::bindTexture2D(0,texture0);
+    texture2D=new Texture2D("../assets/wall.jpg");
+    material->set("texture0",*texture2D);
 }
 
 void GameClient::onExit() {
@@ -124,7 +120,7 @@ void GameClient::tick() {
 void GameClient::render() {
     Env::renderStart();
     Env::clearColor(glm::vec4(1, 1, 1, 1));
-    Env::useShader(shader->getShader());
+    material->use();
     Env::drawObject(vao, 6, Env::DrawType::Triangle);
     Env::renderEnd();
 }
