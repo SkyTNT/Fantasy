@@ -10,9 +10,8 @@
 
 #include <glm/glm.hpp>
 #include <utils/Utils.h>
-#include "GLEnv.h"
+#include "Environment.h"
 
-static GLEnv *env;
 static glm::ivec2 windowSize;
 static int drawTypeMap[20], attribTypeMap[20], colorTypeMap[20], wrapTypeMap[20], filterTypeMap[20];
 
@@ -22,14 +21,7 @@ static GLFMDisplay *mDisplay;
 static GLFWwindow *window;
 #endif
 
-GLEnv::GLEnv() : Environment() {
-}
-
-GLEnv::~GLEnv() {
-}
-
-bool GLEnv::setup(void *args) {
-    env = this;
+bool Env::setup(void *args) {
 
 #ifdef __ANDROID__
     mDisplay= (GLFMDisplay *)(args);
@@ -67,7 +59,7 @@ bool GLEnv::setup(void *args) {
     return true;
 }
 
-void GLEnv::cleanup() {
+void Env::cleanup() {
 #ifdef __ANDROID__
 
 #else
@@ -75,23 +67,23 @@ void GLEnv::cleanup() {
 #endif
 }
 
-void GLEnv::windowResize(int width, int height) {
+void Env::windowResize(int width, int height) {
     windowSize = {width, height};
     glViewport(0, 0, width, height);
 }
 
-int GLEnv::getWindowWidth() {
+int Env::getWindowWidth() {
     return windowSize.x;
 }
 
-int GLEnv::getWindowHeight() {
+int Env::getWindowHeight() {
     return windowSize.y;
 }
 
-void GLEnv::renderStart() {
+void Env::renderStart() {
 }
 
-void GLEnv::renderEnd() {
+void Env::renderEnd() {
 #ifdef __ANDROID__
     glfmSwapBuffers(mDisplay);
 #else
@@ -100,12 +92,12 @@ void GLEnv::renderEnd() {
 #endif
 }
 
-void GLEnv::clearColor(glm::vec4 rgba) {
+void Env::clearColor(glm::vec4 rgba) {
     glClearColor(rgba.r, rgba.g, rgba.b, rgba.a);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
-unsigned int GLEnv::createShader(std::string vertexShader, std::string fragmentShader) {
+unsigned int Env::createShader(std::string vertexShader, std::string fragmentShader) {
 #ifdef __ANDROID__
     vertexShader="#version 300 es\n"+vertexShader;
     fragmentShader="#version 300 es\nprecision highp float;\n"+fragmentShader;
@@ -158,30 +150,30 @@ unsigned int GLEnv::createShader(std::string vertexShader, std::string fragmentS
     return shaderProgram;
 }
 
-void GLEnv::useShader(unsigned int shader) {
+void Env::useShader(unsigned int shader) {
     glUseProgram(shader);
 }
 
-void GLEnv::delShader(unsigned int shader) {
+void Env::delShader(unsigned int shader) {
     glDeleteProgram(shader);
 }
 
-void GLEnv::setUniform(unsigned int shader, const string &name, float val) {
+void Env::setUniform(unsigned int shader, const string &name, float val) {
     int location = glGetUniformLocation(shader, name.c_str());
     glUniform1f(location, val);
 }
 
-void GLEnv::setUniform(unsigned int shader, const string &name, const glm::vec2 &val) {
+void Env::setUniform(unsigned int shader, const string &name, const glm::vec2 &val) {
     int location = glGetUniformLocation(shader, name.c_str());
     glUniform2fv(location, 1, &val[0]);
 }
 
-void GLEnv::setUniform(unsigned int shader, const string &name, const glm::vec3 &val) {
+void Env::setUniform(unsigned int shader, const string &name, const glm::vec3 &val) {
     int location = glGetUniformLocation(shader, name.c_str());
     glUniform3fv(location, 1, &val[0]);
 }
 
-void GLEnv::setUniform(unsigned int shader, const string &name, const glm::vec4 &val) {
+void Env::setUniform(unsigned int shader, const string &name, const glm::vec4 &val) {
     int location = glGetUniformLocation(shader, name.c_str());
     glUniform4fv(location, 1, &val[0]);
 }
@@ -189,54 +181,54 @@ void GLEnv::setUniform(unsigned int shader, const string &name, const glm::vec4 
 #define __setMatrix(size)   int location = glGetUniformLocation(shader, name.c_str());\
                             glUniformMatrix##size##fv(location,1,transpose,&val[0][0]);
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat2 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat2 &val, bool transpose) {
     __setMatrix(2)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat2x3 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat2x3 &val, bool transpose) {
     __setMatrix(2x3)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat2x4 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat2x4 &val, bool transpose) {
     __setMatrix(2x4)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat3 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat3 &val, bool transpose) {
     __setMatrix(3)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat3x2 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat3x2 &val, bool transpose) {
     __setMatrix(3x2)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat3x4 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat3x4 &val, bool transpose) {
     __setMatrix(3x4)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat4 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat4 &val, bool transpose) {
     __setMatrix(4)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat4x2 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat4x2 &val, bool transpose) {
     __setMatrix(4x2)
 }
 
-void GLEnv::setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val, bool transpose) {
+void Env::setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val, bool transpose) {
     __setMatrix(4x3)
 }
 
 #undef __setMatrix
 
-void GLEnv::setTexture(unsigned int shader, const string &name, unsigned int index) {
+void Env::setTexture(unsigned int shader, const string &name, unsigned int index) {
     glUniform1i(glGetUniformLocation(shader, name.c_str()), index);
 }
 
-void GLEnv::bindTexture2D(unsigned int index, unsigned int texture) {
+void Env::bindTexture2D(unsigned int index, unsigned int texture) {
     glActiveTexture(GL_TEXTURE0 + index);
     glBindTexture(GL_TEXTURE_2D, texture);
 }
 
-unsigned int GLEnv::createTexture2D(Env::ColorType::Enum colorType, int width, int height, unsigned char *data) {
+unsigned int Env::createTexture2D(Env::ColorType::Enum colorType, int width, int height, unsigned char *data) {
     unsigned int texture;
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
@@ -252,39 +244,39 @@ unsigned int GLEnv::createTexture2D(Env::ColorType::Enum colorType, int width, i
     return texture;
 }
 
-void GLEnv::setTexture2DWrap(unsigned int texture, Env::WrapType::Enum wrapType) {
+void Env::setTexture2DWrap(unsigned int texture, Env::WrapType::Enum wrapType) {
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, wrapTypeMap[wrapType]);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, wrapTypeMap[wrapType]);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-void GLEnv::setTexture2DFilter(unsigned int texture, Env::FilterType::Enum filterType) {
+void Env::setTexture2DFilter(unsigned int texture, Env::FilterType::Enum filterType) {
     glBindTexture(GL_TEXTURE_2D, texture);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, filterTypeMap[filterType]);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, filterTypeMap[filterType]);
     glBindTexture(GL_TEXTURE_2D, 0);
 }
 
-unsigned int GLEnv::createObject() {
+unsigned int Env::createObject() {
     unsigned int VAO;
     glGenVertexArrays(1, &VAO);
 
     return VAO;
 }
 
-void GLEnv::delObject(unsigned int obj) {
+void Env::delObject(unsigned int obj) {
     glDeleteVertexArrays(1, &obj);
 }
 
-void GLEnv::objBindBuffer(unsigned int obj, unsigned int vertexBuffer, unsigned int elementBuffer) {
+void Env::objBindBuffer(unsigned int obj, unsigned int vertexBuffer, unsigned int elementBuffer) {
     glBindVertexArray(obj);
     glBindBuffer(GL_ARRAY_BUFFER, vertexBuffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, elementBuffer);
     glBindVertexArray(0);
 }
 
-void GLEnv::objSetVertexLayout(unsigned int obj, unsigned int location, unsigned int num, Env::AttribType::Enum type,
+void Env::objSetVertexLayout(unsigned int obj, unsigned int location, unsigned int num, Env::AttribType::Enum type,
                                size_t stride, void *offset, bool normalize) {
 
     glBindVertexArray(obj);
@@ -293,13 +285,13 @@ void GLEnv::objSetVertexLayout(unsigned int obj, unsigned int location, unsigned
     glBindVertexArray(0);
 }
 
-void GLEnv::drawObject(unsigned int obj, unsigned int count, Env::DrawType::Enum type) {
+void Env::drawObject(unsigned int obj, unsigned int count, Env::DrawType::Enum type) {
     glBindVertexArray(obj);
     glDrawElements(drawTypeMap[type], count, GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }
 
-unsigned int GLEnv::createVertexBuffer(size_t dataSize, void *data) {
+unsigned int Env::createVertexBuffer(size_t dataSize, void *data) {
     unsigned int buffer = 0;
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
@@ -308,18 +300,18 @@ unsigned int GLEnv::createVertexBuffer(size_t dataSize, void *data) {
     return buffer;
 }
 
-void GLEnv::delVertexBuffer(unsigned int buffer) {
+void Env::delVertexBuffer(unsigned int buffer) {
     glDeleteBuffers(1, &buffer);
 }
 
-void GLEnv::writeVertexBuffer(unsigned int buffer, size_t dataSize, void *offset, void *data) {
+void Env::writeVertexBuffer(unsigned int buffer, size_t dataSize, void *offset, void *data) {
     glBindBuffer(GL_ARRAY_BUFFER, buffer);
     glBufferSubData(GL_ARRAY_BUFFER, (GLintptr) offset, dataSize, data);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 }
 
 void
-GLEnv::copyVertexBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, void *sourceOffset, void *targetOffset,
+Env::copyVertexBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, void *sourceOffset, void *targetOffset,
                         size_t size) {
     glBindBuffer(GL_COPY_WRITE_BUFFER, targetBuffer);
     glBindBuffer(GL_COPY_READ_BUFFER, sourceBuffer);
@@ -329,7 +321,7 @@ GLEnv::copyVertexBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, vo
     glBindBuffer(GL_COPY_READ_BUFFER, 0);
 }
 
-unsigned int GLEnv::createElementBuffer(size_t dataSize, void *data) {
+unsigned int Env::createElementBuffer(size_t dataSize, void *data) {
     unsigned int buffer = 0;
     glGenBuffers(1, &buffer);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer);
@@ -338,18 +330,18 @@ unsigned int GLEnv::createElementBuffer(size_t dataSize, void *data) {
     return buffer;
 }
 
-void GLEnv::delElementBuffer(unsigned int buffer) {
+void Env::delElementBuffer(unsigned int buffer) {
     glDeleteBuffers(1, &buffer);
 }
 
-void GLEnv::writeElementBuffer(unsigned int buffer, size_t dataSize, void *offset, void *data) {
+void Env::writeElementBuffer(unsigned int buffer, size_t dataSize, void *offset, void *data) {
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, buffer);
     glBufferSubData(GL_ELEMENT_ARRAY_BUFFER, (GLintptr) offset, dataSize, data);
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
 }
 
 void
-GLEnv::copyElementBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, void *sourceOffset, void *targetOffset,
+Env::copyElementBuffer(unsigned int sourceBuffer, unsigned int targetBuffer, void *sourceOffset, void *targetOffset,
                          size_t size) {
     glBindBuffer(GL_COPY_WRITE_BUFFER, targetBuffer);
     glBindBuffer(GL_COPY_READ_BUFFER, sourceBuffer);

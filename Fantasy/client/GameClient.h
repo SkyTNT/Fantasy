@@ -1,5 +1,5 @@
 #pragma once
-#include "env/Environment.h"
+#include <env/Environment.h>
 #include "input/Input.h"
 
 class GameClient
@@ -8,7 +8,7 @@ public:
 	GameClient();
 	~GameClient();
 
-    void init(Environment *env);//环境设置
+    void init();//环境设置
 	void exit();//退出客户端
 
 	void tick();//帧事件
@@ -28,7 +28,6 @@ private:
 
 private:
     Input *input;
-	Environment* env;
 	int width, height;
 	bool exiting;
 	long lastTime;

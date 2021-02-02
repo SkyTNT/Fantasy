@@ -2,18 +2,16 @@
 #include <GLFW/glfw3.h>
 #include <client/input/Input.h>
 #include <client/GameClient.h>
-#include <client/env/gl/GLEnv.h>
 #include <utils/Utils.h>
 
 //½ûÓÃ¿ØÖÆÌ¨
 //#pragma comment( linker, "/subsystem:windows /entry:mainCRTStartup" )
 
-static GLEnv *env;
 static GLFWwindow* window;
 static GameClient *mClient;
 
 static void framebuffer_size_callback(GLFWwindow* window,int width,int height) {
-    env->windowResize(width,height);
+    Env::windowResize(width,height);
 }
 
 static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
@@ -47,19 +45,16 @@ int main(int argNum,char**args)
     glfwSetKeyCallback(window, keyCallback);
     glfwSetWindowCloseCallback(window, closeCallback);
 
-    env = new GLEnv();
     mClient = new GameClient();
 
-	env->setup(window);
-	mClient->init(env);
+	Env::setup(window);
+	mClient->init();
 
     while (!mClient->needExiting())
     {
         mClient->tick();
         mClient->render();
     }
-	mClient->exit();
 	delete mClient;
-	delete env;
 	return 0;
 }
