@@ -5,6 +5,7 @@
 #include <stb_image.h>
 #include <game/asset/Shader.h>
 #include <game/asset/Material.h>
+#include <game/asset/Mesh.h>
 
 static GameClient *mClient;
 
@@ -24,21 +25,10 @@ void GameClient::exit() {
     exiting = true;
 }
 
-unsigned int  vao, vbo, ebo;
 Shader *shader;
-Texture2D *texture2D;
+Texture2D *texture1,*texture2;
 Material *material;
-
-float vertices[] = {
-        0.5f, 0.5f, 0.0f, 1, 0, 0, 1, 0,  // top right
-        0.5f, -0.5f, 0.0f, 0, 1, 0, 1, 1,  // bottom right
-        -0.5f, -0.5f, 0.0f, 0, 0, 1, 0, 1,  // bottom left
-        -0.5f, 0.5f, 0.0f, 1, 0, 1, 0, 0   // top left
-};
-unsigned int indices[] = {  // note that we start from 0!
-        0, 1, 3,  // first Triangle
-        1, 2, 3   // second Triangle
-};
+Mesh *mesh;
 
 void GameClient::init() {
 
@@ -54,22 +44,47 @@ void GameClient::init() {
     });
     shader = new Shader("tr.vert","tr.frag");
     material=new Material(shader);
-    vao = Env::createObject();
-    vbo = Env::createVertexBuffer(sizeof(vertices), vertices);
-    ebo = Env::createElementBuffer(sizeof(indices), indices);
-    Env::objBindBuffer(vao, vbo, ebo);
-    Env::objSetVertexLayout(vao, 0, 3, Env::AttribType::Float, 8 * sizeof(float), 0, false);
-    Env::objSetVertexLayout(vao, 1, 3, Env::AttribType::Float, 8 * sizeof(float), (void *) (3 * sizeof(float)), false);
-    Env::objSetVertexLayout(vao, 2, 2, Env::AttribType::Float, 8 * sizeof(float), (void *) (6 * sizeof(float)), false);
-    texture2D=new Texture2D("../assets/wall.jpg");
-    material->set("texture0",*texture2D);
+    mesh=new Mesh();
+    glm::vec3 pos[]={
+            {0.5f, 0.5f, 0.0f},
+            {0.5f, -0.5f, 0.0f},
+            {-0.5f, -0.5f, 0.0f},
+            {-0.5f, 0.5f, 0.0f}
+    };
+    glm::vec3 normal[]={
+            {1, 0, 0},
+            {0, 1, 0},
+            { 0, 0, 1},
+            {1, 0, 1}
+    };
+    glm::vec2 uv[]={
+            {1, 0},
+            {1,1},
+            { 0,1},
+            {0,0}
+    };
+    unsigned int indices[] = {
+            0, 1, 3,
+            1, 2, 3
+    };
+    mesh->setVerticesCount(4);
+    mesh->setPosition(pos);
+    mesh->setNormal(normal);
+    mesh->setUV(uv);
+    mesh->setIndices(6,indices);
+    mesh->finish();
+    texture1=new Texture2D("../assets/wall.jpg");
+    texture2=new Texture2D("../assets/face.png");
+    material->set("texture0",texture1);
+    material->set("texture1",texture2);
 }
 
 void GameClient::onExit() {
     delete shader;
-    Env::delVertexBuffer(vbo);
-    Env::delElementBuffer(ebo);
-    Env::delObject(vao);
+    delete material;
+    delete mesh;
+    delete texture1;
+    delete texture2;
     Env::cleanup();
 }
 
@@ -121,7 +136,7 @@ void GameClient::render() {
     Env::renderStart();
     Env::clearColor(glm::vec4(1, 1, 1, 1));
     material->use();
-    Env::drawObject(vao, 6, Env::DrawType::Triangle);
+    Env::drawObject(mesh->getObject(), mesh->getCount(), Env::DrawType::Triangle, mesh->hasIndices());
     Env::renderEnd();
 }
 

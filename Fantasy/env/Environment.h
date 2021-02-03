@@ -7,7 +7,7 @@ namespace Env {
     //绘制类型
     struct DrawType {
         enum Enum {
-            Point,//点绘制
+            Point = 0,//点绘制
             Line,//单独线条绘制
             LineStrip,//折线绘制
             LineLoop,//闭合折线绘制
@@ -16,16 +16,24 @@ namespace Env {
             TriangleFan,//扇面绘制
         };
     };
+
+    struct MemoryType{
+        enum Enum{
+            Static = 0,
+            Dynamic,
+            Stream
+        };
+    };
     //顶点属性类型
     struct AttribType {
         enum Enum {
-            Float,//float
+            Float = 0,//float
         };
     };
     //纹理环绕方式
     struct WrapType {
         enum Enum {
-            Repeat,//重复
+            Repeat = 0,//重复
             MirroredRepeat,//镜像重复
             ClampToEdge,//边缘拉伸
         };
@@ -34,7 +42,7 @@ namespace Env {
     //颜色格式
     struct ColorType {
         enum Enum {
-            RGB,
+            RGB = 0,
             RGBA,
         };
     };
@@ -42,7 +50,7 @@ namespace Env {
     //纹理过滤方式
     struct FilterType {
         enum Enum {
-            Nearest,//邻近过滤
+            Nearest = 0,//邻近过滤
             Linear//邻近过滤
         };
     };
@@ -114,17 +122,17 @@ namespace Env {
 
     //创建纹理，colorType:纹理色彩格式，data:纹理的数据
     unsigned int
-    createTexture2D(Env::ColorType::Enum colorType, int width, int height, unsigned char *data);
+    createTexture2D(ColorType::Enum colorType, int width, int height, unsigned char *data);
 
     //删除纹理
     void delTexture2D(unsigned int texture);
 
     //纹理环绕方式
     void
-    setTexture2DWrap(unsigned int texture, Env::WrapType::Enum wrapType);
+    setTexture2DWrap(unsigned int texture, WrapType::Enum wrapType);
 
     //纹理过滤
-    void setTexture2DFilter(unsigned int texture, Env::FilterType::Enum filterType);
+    void setTexture2DFilter(unsigned int texture, FilterType::Enum filterType);
 
     //创建物体
     unsigned int createObject();
@@ -136,15 +144,16 @@ namespace Env {
     void objBindBuffer(unsigned int obj, unsigned int vertexBuffer, unsigned int elementBuffer);
 
     //设置顶点属性的布局，location:顶点属性在shader中的位置，num:顶点属性包含的数据个数，type:顶点属性数据类型,siride:步长即到下一个相同顶点属性间隔，offset：顶点属性与开头的偏移，normalize：是否标准化
+    //必须在objBindBuffer后调用
     void
-    objSetVertexLayout(unsigned int obj, unsigned int location, unsigned int num, Env::AttribType::Enum type,
+    objSetVertexLayout(unsigned int obj, unsigned int location, unsigned int num, AttribType::Enum type,
                        size_t stride, void *offset, bool normalize);
 
-    //绘制obj
-    void drawObject(unsigned int obj, unsigned int count, Env::DrawType::Enum type);
+    //绘制物体
+    void drawObject(unsigned int obj, unsigned int count, DrawType::Enum type, bool useIndices);
 
     //创建顶点缓冲对象
-    unsigned int createVertexBuffer(size_t dataSize, void *data);
+    unsigned int createVertexBuffer(size_t dataSize, void *data, MemoryType::Enum memType);
 
     //删除顶点缓冲对象
     void delVertexBuffer(unsigned int buffer);
@@ -158,7 +167,7 @@ namespace Env {
                      size_t size);
 
     //创建索引缓冲对象
-    unsigned int createElementBuffer(size_t dataSize, void *data);
+    unsigned int createElementBuffer(size_t dataSize, void *data, MemoryType::Enum memType);
 
     //删除索引缓冲对象
     void delElementBuffer(unsigned int buffer);

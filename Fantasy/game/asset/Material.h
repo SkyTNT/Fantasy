@@ -24,7 +24,7 @@ public:
     void set(const std::string &name,const glm::mat4 &val);
     void set(const std::string &name,const glm::mat4x2 &val);
     void set(const std::string &name,const glm::mat4x3 &val);
-    void set(const std::string &name,const Texture2D &val);
+    void set(const std::string &name,Texture2D *val);
 
     void use();
 
@@ -45,6 +45,6 @@ private:
     std::map<std::string, glm::mat4x2>mat4x2Uniforms;
     std::map<std::string, glm::mat4x3>mat4x3Uniforms;
     std::map<std::string, int>texture2DIndex;
-    std::vector<Texture2D> texture2Ds;
+    std::vector<Texture2D *> texture2Ds;
 };
 

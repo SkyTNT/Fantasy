@@ -1,5 +1,6 @@
 #include "Material.h"
 #include <env/Environment.h>
+#include <utils/Utils.h>
 
 Material::Material(Shader *shader) : shader(shader) {
     shaderID=shader->getShader();
@@ -9,6 +10,7 @@ Material::~Material() {
 
 }
 
+//储存着色器Uniform
 void Material::set(const std::string &name, float val) {
     floatUniforms[name]=val;
 }
@@ -61,7 +63,7 @@ void Material::set(const std::string &name, const glm::mat4x3 &val) {
     mat4x3Uniforms[name]=val;
 }
 
-void Material::set(const std::string &name, const Texture2D &val) {
+void Material::set(const std::string &name, Texture2D *val) {
     auto it=texture2DIndex.find(name);
     if(it==texture2DIndex.end())
     {
@@ -74,6 +76,7 @@ void Material::set(const std::string &name, const Texture2D &val) {
 
 }
 
+//使用着色器并设置uniform
 void Material::use() {
     Env::useShader(shaderID);
     for(const auto& it:floatUniforms){
@@ -114,6 +117,6 @@ void Material::use() {
     }
     for(const auto& it:texture2DIndex){
         Env::setTexture(shaderID,it.first,it.second);
-        Env::bindTexture2D(it.second,texture2Ds[it.second].getTexture());
+        Env::bindTexture2D(it.second,texture2Ds[it.second]->getTexture());
     }
 }
