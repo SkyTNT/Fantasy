@@ -48,6 +48,7 @@ int main(int argNum,char**args)
     mClient = new GameClient();
 
 	Env::setup(window);
+    Env::windowResize(1600,800);
 	mClient->init();
 
     while (!mClient->needExiting())

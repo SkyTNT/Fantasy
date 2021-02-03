@@ -5,32 +5,28 @@
 #define GLFM_INCLUDE_ES3
 #include <glfm.h>
 #include <cstring>
-#include <client/env/gl/GLEnv.h>
+#include <env/Environment.h>
 #include <client/GameClient.h>
 #include <utils/Utils.h>
 
-
-static GLEnv *glEnv;
 static GameClient*client;
 
 static void onSurfaceCreated(GLFMDisplay *display, int width, int height) {
-    LOG_I("iDir",glfmAndroidGetActivity()->internalDataPath);
-    LOG_I("eDir",glfmAndroidGetActivity()->externalDataPath);
-    glEnv = new GLEnv();
+
     client=new GameClient();
-    glEnv->setup(display);
-    client->init(glEnv);
-    glEnv->windowResize(width,height);
+    Env::setup(display);
+    Env::windowResize(width,height);
+    client->init();
+
 }
 
 static void onSurfaceResize(GLFMDisplay *display, int width, int height) {
-    glEnv->windowResize(width,height);
+    Env::windowResize(width,height);
 }
 
 static void onSurfaceDestroyed(GLFMDisplay *display) {
     client->exit();
     delete client;
-    delete glEnv;
 }
 
 static void onFrame(GLFMDisplay *display) {

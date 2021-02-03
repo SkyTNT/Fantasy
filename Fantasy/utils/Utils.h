@@ -18,5 +18,3 @@ void LOG_I(string tag, string str);
 void LOG_W(string tag, string str);
 void LOG_E(string tag, string str);
 
-string read_file(string path);
-string load_asset(string path);

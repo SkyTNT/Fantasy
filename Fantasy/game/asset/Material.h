@@ -8,9 +8,11 @@
 
 class Material {
 public:
+    Material();
     explicit Material(Shader* shader);
     ~Material();
 
+    void setShader(Shader* shader);
     void set(const std::string &name,float val);
     void set(const std::string &name,const glm::vec2 &val);
     void set(const std::string &name,const glm::vec3 &val);

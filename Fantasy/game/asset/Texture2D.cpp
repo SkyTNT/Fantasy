@@ -1,19 +1,19 @@
 #include "Texture2D.h"
-#include <stb_image.h>
 #include <env/Environment.h>
 #include <utils/Utils.h>
+#include <utils/FileManager.h>
 
 Texture2D::Texture2D(const std::string &path) {
     texture=0;
     this->path=path;
     LOG_I("File","load texture2D "+path);
-    unsigned char *data = stbi_load(path.c_str(), &width, &height, &channels, 0);
+    unsigned char *data = FileManager::loadImage(path.c_str(), &width, &height, &channels);
     type=channels==3?(Env::ColorType::RGB):(Env::ColorType::RGBA);
     if (data)
         texture=Env::createTexture2D(type,width,height,data);
     else
         LOG_E("File","texture load failed");
-    stbi_image_free(data);
+    FileManager::freeImage(data);
 }
 
 Texture2D::~Texture2D() {

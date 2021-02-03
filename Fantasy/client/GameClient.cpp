@@ -1,11 +1,10 @@
 #include "GameClient.h"
 #include <ctime>
 #include <utils/Utils.h>
-#define STB_IMAGE_IMPLEMENTATION
-#include <stb_image.h>
 #include <game/asset/Shader.h>
 #include <game/asset/Material.h>
 #include <game/asset/Mesh.h>
+#include <glm/gtc/matrix_transform.hpp>
 
 static GameClient *mClient;
 
@@ -42,6 +41,9 @@ void GameClient::init() {
     input->setMouseMoveCallBack([this](float x, float y) {
         onMouseMove(x, y);
     });
+    width = Env::getWindowWidth();
+    height = Env::getWindowHeight();
+
     shader = new Shader("tr.vert","tr.frag");
     material=new Material(shader);
     mesh=new Mesh();
@@ -73,10 +75,14 @@ void GameClient::init() {
     mesh->setUV(uv);
     mesh->setIndices(6,indices);
     mesh->finish();
-    texture1=new Texture2D("../assets/wall.jpg");
-    texture2=new Texture2D("../assets/face.png");
+    texture1=new Texture2D("wall.jpg");
+    texture2=new Texture2D("face.png");
     material->set("texture0",texture1);
     material->set("texture1",texture2);
+    material->set("texture0",texture1);
+    material->set("projection",glm::perspective(glm::radians(45.0f), width*1.0f / height, 0.1f, 100.0f));
+    material->set("view",glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f)));
+    material->set("model", glm::rotate(glm::mat4(1.0f), glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
 }
 
 void GameClient::onExit() {

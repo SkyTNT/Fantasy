@@ -2,12 +2,22 @@
 #include <env/Environment.h>
 #include <utils/Utils.h>
 
+Material::Material() {
+    shader= nullptr;
+    shaderID=0;
+}
+
 Material::Material(Shader *shader) : shader(shader) {
     shaderID=shader->getShader();
 }
 
 Material::~Material() {
 
+}
+
+void Material::setShader(Shader *shader) {
+    this->shader=shader;
+    shaderID=shader->getShader();
 }
 
 //´¢´æ×ÅÉ«Æ÷Uniform
