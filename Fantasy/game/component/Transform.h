@@ -5,11 +5,15 @@
 class Transform:public Component
 {
 public:
-	Transform();
+	explicit Transform(GameObject *gameObject);
 	~Transform() override;
-	void tick(double dTime) override;
+	void init() override;
+	void tick() override;
+    glm::mat4 getMatrix();
 
 public:
 	glm::vec3 position, rotation, scale;
+private:
+    glm::mat4 matrix;
 };
 

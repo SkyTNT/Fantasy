@@ -4,6 +4,7 @@
 #include <client/GameClient.h>
 #include <utils/Utils.h>
 
+
 //½ûÓÃ¿ØÖÆÌ¨
 //#pragma comment( linker, "/subsystem:windows /entry:mainCRTStartup" )
 
@@ -59,3 +60,4 @@ int main(int argNum,char**args)
 	delete mClient;
 	return 0;
 }
+

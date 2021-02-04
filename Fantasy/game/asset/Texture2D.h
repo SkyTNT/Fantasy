@@ -1,11 +1,12 @@
 #pragma once
 #include <string>
 #include <env/Environment.h>
+#include "Asset.h"
 
-class Texture2D {
+class Texture2D: public Asset {
 public:
     explicit Texture2D(const std::string &path);
-    ~Texture2D();
+    ~Texture2D() override;
 
     unsigned int getTexture();
     int getWidth();

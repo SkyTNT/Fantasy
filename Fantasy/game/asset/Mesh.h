@@ -1,9 +1,11 @@
 #pragma once
 #include <glm/glm.hpp>
-class Mesh {
+#include "Asset.h"
+
+class Mesh : public Asset{
 public:
     Mesh();
-    ~Mesh();
+    ~Mesh() override;
     //设置顶点个数
     void setVerticesCount(unsigned int verticesCount);
     //设置顶点位置

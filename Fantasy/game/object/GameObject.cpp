@@ -1,10 +1,12 @@
+#include <utils/Utils.h>
 #include "GameObject.h"
-
+#include "../component/Transform.h"
 
 
 GameObject::GameObject()
 {
-	transform = new Transform();
+    parent = nullptr;
+	transform = new Transform(this);
 	components.push_back(transform);
 }
 
@@ -12,8 +14,13 @@ GameObject::GameObject()
 GameObject::~GameObject()
 {
 	delete transform;
-	children.clear();
-	children.shrink_to_fit();
-	components.clear();
-	components.shrink_to_fit();
+}
+
+Component* GameObject::getComponent(const std::type_info &info) {
+    for (auto component:components)
+    {
+        if (typeid(*component)==info)
+            return component;
+    }
+    return nullptr;
 }

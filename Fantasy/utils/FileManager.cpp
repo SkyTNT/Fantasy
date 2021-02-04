@@ -1,5 +1,7 @@
 #include "FileManager.h"
+
 #define STB_IMAGE_IMPLEMENTATION
+
 #include <stb_image.h>
 #include "Utils.h"
 
@@ -45,34 +47,33 @@ static FILE *_fc_android_fopen(const char *filename, const char *mode) {
 #define BasePath "../assets/"
 #endif
 
-namespace FileManager{
-    std::string loadText(const std::string &path){
-        LOG_I("File", "load file " + path);
-        FILE *file;
-        file =fopen((BasePath+path).c_str(), "rb");
-        if (file) {
-            fseek(file, 0, SEEK_END);
-            long length = ftell(file);
-            fseek(file, 0, SEEK_SET);
-
-            char *fstr = new char[length+1];
-            fread(fstr, length, 1, file);
-            fstr[length] = 0;
-            fclose(file);
-            string ret(fstr);
-            delete[] fstr;
-            return ret;
-        }
-        LOG_E("File","load " + path + " field");
-        return "";
+std::string FileManager::loadText(const std::string &path) {
+    FILE *file;
+    file = fopen((BasePath + path).c_str(), "rb");
+    if (file) {
+        fseek(file, 0, SEEK_END);
+        long length = ftell(file);
+        fseek(file, 0, SEEK_SET);
+        char *fstr = new char[length + 1];
+        fread(fstr, length, 1, file);
+        fstr[length] = 0;
+        fclose(file);
+        string ret(fstr);
+        delete[] fstr;
+        return ret;
     }
+    LOG_E("File", "load " + path + " field");
+    return "";
+}
 
-    unsigned char *loadImage(const std::string &path,int *width,int *height,int *channel){
-        FILE *file=fopen((BasePath+path).c_str(), "rb");
-        return stbi_load_from_file(file,width,height,channel,0);
-    }
+unsigned char *FileManager::loadImage(const std::string &path, int *width, int *height, int *channel) {
+    FILE *file = fopen((BasePath + path).c_str(), "rb");
+    if (file)
+        return stbi_load_from_file(file, width, height, channel, 0);
+    LOG_E("File", "load " + path + " field");
+    return nullptr;
+}
 
-    void freeImage(unsigned char *data){
-        stbi_image_free(data);
-    }
+void FileManager::freeImage(unsigned char *data) {
+    stbi_image_free(data);
 }

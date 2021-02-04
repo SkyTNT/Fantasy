@@ -1,6 +1,8 @@
 #include "GameClient.h"
-#include <ctime>
 #include <utils/Utils.h>
+#include <game/system/Time.h>
+#include <game/system/Window.h>
+#include <game/asset/AssetsManager.h>
 #include <game/asset/Shader.h>
 #include <game/asset/Material.h>
 #include <game/asset/Mesh.h>
@@ -8,8 +10,9 @@
 
 static GameClient *mClient;
 
-GameClient::GameClient() : exiting(false), width(0), height(0), lastTime(0) {
+GameClient::GameClient() : exiting(false){
     mClient = this;
+    currentScene = nullptr;
     input = new Input();
 }
 
@@ -25,11 +28,13 @@ void GameClient::exit() {
 }
 
 Shader *shader;
-Texture2D *texture1,*texture2;
 Material *material;
 Mesh *mesh;
 
 void GameClient::init() {
+    Window::update();//让初始化时就能获取窗口大小
+    AssetsManager::initAssets();
+
 
     //设置输入回调
     input->setKeyCallBack([this](int code, int mods, int action) {
@@ -41,62 +46,21 @@ void GameClient::init() {
     input->setMouseMoveCallBack([this](float x, float y) {
         onMouseMove(x, y);
     });
-    width = Env::getWindowWidth();
-    height = Env::getWindowHeight();
 
-    shader = new Shader("tr.vert","tr.frag");
-    material=new Material(shader);
-    mesh=new Mesh();
-    glm::vec3 pos[]={
-            {0.5f, 0.5f, 0.0f},
-            {0.5f, -0.5f, 0.0f},
-            {-0.5f, -0.5f, 0.0f},
-            {-0.5f, 0.5f, 0.0f}
-    };
-    glm::vec3 normal[]={
-            {1, 0, 0},
-            {0, 1, 0},
-            { 0, 0, 1},
-            {1, 0, 1}
-    };
-    glm::vec2 uv[]={
-            {1, 0},
-            {1,1},
-            { 0,1},
-            {0,0}
-    };
-    unsigned int indices[] = {
-            0, 1, 3,
-            1, 2, 3
-    };
-    mesh->setVerticesCount(4);
-    mesh->setPosition(pos);
-    mesh->setNormal(normal);
-    mesh->setUV(uv);
-    mesh->setIndices(6,indices);
-    mesh->finish();
-    texture1=new Texture2D("wall.jpg");
-    texture2=new Texture2D("face.png");
-    material->set("texture0",texture1);
-    material->set("texture1",texture2);
-    material->set("texture0",texture1);
-    material->set("projection",glm::perspective(glm::radians(45.0f), width*1.0f / height, 0.1f, 100.0f));
-    material->set("view",glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f)));
+    shader = (Shader *)AssetsManager::getAsset("shader/tr");
+    mesh = (Mesh*)AssetsManager::getAsset("mesh/cube");
+    material = (Material*)AssetsManager::getAsset("material/cube");
+
+    material->set("projection", glm::perspective(glm::radians(45.0f), Window::width * 1.0f / Window::height, 0.1f, 100.0f));
+    material->set("view", glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f)));
     material->set("model", glm::rotate(glm::mat4(1.0f), glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
 }
 
 void GameClient::onExit() {
-    delete shader;
-    delete material;
-    delete mesh;
-    delete texture1;
-    delete texture2;
+    AssetsManager::freeAssets();
     Env::cleanup();
 }
 
-void GameClient::onResize(int width, int height) {
-
-}
 
 void GameClient::onKeyEvent(int code, int mods, int action) {
     switch (code) {
@@ -117,24 +81,8 @@ void GameClient::onMouseMove(float x, float y) {
 }
 
 void GameClient::tick() {
-    //计算间隔时间
-    long now = clock();
-    long dTimeMs = now - lastTime;
-    if (dTimeMs < 0) {
-        dTimeMs += LONG_MAX;//防止时间重置
-    }
-    double dTimeSec = ((float) dTimeMs) / CLOCKS_PER_SEC;
-
-    //检测窗口大小变化
-    int newWidth = Env::getWindowWidth();
-    int newHeight = Env::getWindowHeight();
-    bool sizeChanged = width != newWidth || height != newHeight;
-    width = newWidth;
-    height = newHeight;
-    if (sizeChanged) {
-        onResize(newWidth, newHeight);
-    }
-    lastTime = clock();
+    Time::update();
+    Window::update();
 }
 
 
@@ -144,6 +92,10 @@ void GameClient::render() {
     material->use();
     Env::drawObject(mesh->getObject(), mesh->getCount(), Env::DrawType::Triangle, mesh->hasIndices());
     Env::renderEnd();
+}
+
+void GameClient::loadScene(Scene *scene) {
+    this->currentScene = scene;
 }
 
 Input *GameClient::getInput() {

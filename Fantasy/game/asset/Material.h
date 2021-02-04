@@ -6,11 +6,11 @@
 #include "Shader.h"
 #include "Texture2D.h"
 
-class Material {
+class Material: public Asset {
 public:
     Material();
     explicit Material(Shader* shader);
-    ~Material();
+    ~Material() override;
 
     void setShader(Shader* shader);
     void set(const std::string &name,float val);

@@ -2,7 +2,7 @@
 
 
 
-Component::Component()
+Component::Component(GameObject *gameObject):gameObject(gameObject)
 {
 	
 }

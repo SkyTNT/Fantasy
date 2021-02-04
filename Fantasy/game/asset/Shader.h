@@ -1,13 +1,15 @@
 #pragma once
 #include <string>
+#include "Asset.h"
 
-class Shader {
+class Shader: public Asset {
 public:
     Shader(const std::string& pathVert, const std::string& pathFrag);
-    virtual ~Shader();
+    ~Shader() override;
 
     unsigned int getShader();
 private:
     unsigned int shader;
+    std::string pathVert,pathFrag;
 };
 
