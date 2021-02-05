@@ -8,20 +8,20 @@
 #include <atomic>
 #include <mutex>
 
-class ThreadPool
-{
+class ThreadPool {
 public:
-	ThreadPool(int num);
+    ThreadPool(int num);
+
     ~ThreadPool();
 
     void commit(std::function<void()> task);
 
 private:
-	inline void init();
+    inline void init();
 
     bool stop;
     int threadnum;
-    std::vector<std::thread*> threads;
+    std::vector<std::thread *> threads;
     std::mutex tasks_lock;
     std::condition_variable cv_task;
     std::queue<std::function<void()> > tasks;

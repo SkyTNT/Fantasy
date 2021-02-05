@@ -2,7 +2,7 @@
 #include "../component/Component.h"
 
 Scene::Scene() {
-    root=new GameObject();
+    root = new GameObject();
 }
 
 Scene::~Scene() {
@@ -13,18 +13,16 @@ void Scene::init() {
 
 }
 
-void gameObjectsDFS(GameObject *gameObject){
-    for(auto component:gameObject->components)
-    {
-        if(!component->initialized)
-        {
+void gameObjectsDFS(GameObject *gameObject) {
+    for (auto component:gameObject->components) {
+        if (!component->initialized) {
             component->init();
-            component->initialized= true;
+            component->initialized = true;
         }
         component->tick();
     }
 
-    for(auto child:gameObject->children)
+    for (auto child:gameObject->children)
         gameObjectsDFS(child);
 }
 

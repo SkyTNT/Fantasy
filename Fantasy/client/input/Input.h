@@ -1,26 +1,30 @@
 #pragma once
+
 #include<string>
 #include<functional>
 
 
 //输入类
-class Input
-{
+class Input {
 public:
-	Input();
-	~Input();
-	
-	void sendKeyEvent(int code, int mods,int action);//发送键盘按键事件
-	void sendMouseKeyEvent(int code, int mods, int action);//发送鼠标按键事件
-	void sendMouseMove(float x ,float y);//发送鼠标位置变化
+    Input();
 
-	void setKeyCallBack(std::function<void(int, int, int)> keyCallBack);
-	void setMouseKeyCallBack(std::function<void(int, int, int)> mouseKeyCallBack);
-	void setMouseMoveCallBack(std::function<void(float, float)> mouseKPosCallBack);
+    ~Input();
+
+    void sendKeyEvent(int code, int mods, int action);//发送键盘按键事件
+    void sendMouseKeyEvent(int code, int mods, int action);//发送鼠标按键事件
+    void sendMouseMove(float x, float y);//发送鼠标位置变化
+
+    void setKeyCallBack(std::function<void(int, int, int)> keyCallBack);
+
+    void setMouseKeyCallBack(std::function<void(int, int, int)> mouseKeyCallBack);
+
+    void setMouseMoveCallBack(std::function<void(float, float)> mouseKPosCallBack);
+
 private:
-	std::function<void(int, int, int)> keyCallBack;
-	std::function<void(int, int, int)> mouseKeyCallBack;
-	std::function<void(float, float)> mouseMoveCallBack;
+    std::function<void(int, int, int)> keyCallBack;
+    std::function<void(int, int, int)> mouseKeyCallBack;
+    std::function<void(float, float)> mouseMoveCallBack;
 };
 
 

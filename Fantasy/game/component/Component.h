@@ -3,17 +3,18 @@
 class GameObject;
 
 //组件
-class Component
-{
+class Component {
 public:
 
-	explicit Component(GameObject *gameObject);
-	virtual ~Component();
+    explicit Component(GameObject *gameObject);
 
-	//第一帧调用
-	virtual void init() = 0;
-	//每帧调用
-	virtual void tick() = 0;
+    virtual ~Component();
+
+    //第一帧调用
+    virtual void init() = 0;
+
+    //每帧调用
+    virtual void tick() = 0;
 
 public:
     bool initialized;
@@ -22,4 +23,3 @@ protected:
 
 
 };
-

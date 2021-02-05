@@ -1,20 +1,24 @@
 #pragma once
+
 #include <glm/glm.hpp>
 #include "Component.h"
 
 //变换（物体基本属性）
-class Transform:public Component
-{
+class Transform : public Component {
 public:
-	explicit Transform(GameObject *gameObject);
-	~Transform() override;
-	void init() override;
-	void tick() override;
-	//获取变换矩阵
+    explicit Transform(GameObject *gameObject);
+
+    ~Transform() override;
+
+    void init() override;
+
+    void tick() override;
+
+    //获取变换矩阵
     glm::mat4 getMatrix();
+
 public:
-	glm::vec3 position, rotation, scale;
+    glm::vec3 position, rotation, scale;
 private:
     glm::mat4 matrix;
 };
-

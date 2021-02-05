@@ -17,8 +17,8 @@ namespace Env {
         };
     };
 
-    struct MemoryType{
-        enum Enum{
+    struct MemoryType {
+        enum Enum {
             Static = 0,
             Dynamic,
             Stream

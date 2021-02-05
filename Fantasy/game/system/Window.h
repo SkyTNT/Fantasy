@@ -5,5 +5,5 @@ class Window {
 public:
     static void tick();
 
-    static int width,height;
+    static int width, height;
 };

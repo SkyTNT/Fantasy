@@ -9,5 +9,6 @@ public:
     static double deltaTime;
     //时间速度缩放
     static double timeScale;
+
     static void tick();
 };

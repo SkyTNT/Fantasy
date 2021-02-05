@@ -7,7 +7,7 @@
 
 static GameClient *mClient;
 
-GameClient::GameClient() : exiting(false){
+GameClient::GameClient() : exiting(false) {
     mClient = this;
     currentScene = nullptr;
     input = new Input();
@@ -40,8 +40,6 @@ void GameClient::init() {
         onMouseMove(x, y);
     });
     loadScene(new Scene());
-
-
 }
 
 void GameClient::onExit() {
@@ -94,4 +92,3 @@ bool GameClient::needExiting() {
 GameClient *GameClient::getGameClient() {
     return mClient;
 }
-

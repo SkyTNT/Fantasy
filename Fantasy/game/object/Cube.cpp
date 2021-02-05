@@ -8,7 +8,7 @@ Cube::Cube() {
     meshFilter->mesh = (Mesh *) AssetsManager::getAsset("mesh/cube");
     components.push_back(meshFilter);
     auto meshRender = new MeshRender(this);
-    meshRender->material= (Material *) AssetsManager::getAsset("material/cube");
+    meshRender->material = (Material *) AssetsManager::getAsset("material/cube");
     components.push_back(meshRender);
 }
 
