@@ -4,7 +4,7 @@
 int Window::width= 0;
 int Window::height= 0;
 
-void Window::update() {
+void Window::tick() {
     width = Env::getWindowWidth();
     height = Env::getWindowHeight();
 }

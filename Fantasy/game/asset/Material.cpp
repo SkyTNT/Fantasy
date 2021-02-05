@@ -98,6 +98,9 @@ void Material::use() {
     for(const auto& it:vec3Uniforms){
         Env::setUniform(shaderID,it.first,it.second);
     }
+    for(const auto& it:vec4Uniforms){
+        Env::setUniform(shaderID,it.first,it.second);
+    }
     for(const auto& it:mat2Uniforms){
         Env::setUniform(shaderID,it.first,it.second, false);
     }

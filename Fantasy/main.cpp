@@ -3,6 +3,7 @@
 #include <client/input/Input.h>
 #include <client/GameClient.h>
 #include <utils/Utils.h>
+#include <game/scene/TestScene.h>
 
 
 //½ûÓÃ¿ØÖÆÌ¨
@@ -10,6 +11,7 @@
 
 static GLFWwindow* window;
 static GameClient *mClient;
+static TestScene* testScene;
 
 static void framebuffer_size_callback(GLFWwindow* window,int width,int height) {
     Env::windowResize(width,height);
@@ -45,18 +47,21 @@ int main(int argNum,char**args)
     glfwSetFramebufferSizeCallback(window,framebuffer_size_callback);
     glfwSetKeyCallback(window, keyCallback);
     glfwSetWindowCloseCallback(window, closeCallback);
+    Env::setup(window);
+    Env::windowResize(1600,800);
 
     mClient = new GameClient();
+    testScene=new TestScene();
 
-	Env::setup(window);
-    Env::windowResize(1600,800);
 	mClient->init();
+	mClient->loadScene(testScene);
 
     while (!mClient->needExiting())
     {
         mClient->tick();
     }
 	delete mClient;
+    delete testScene;
 	return 0;
 }
 

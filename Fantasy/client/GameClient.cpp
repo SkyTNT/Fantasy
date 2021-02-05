@@ -2,9 +2,8 @@
 #include <utils/Utils.h>
 #include <game/system/Time.h>
 #include <game/system/Window.h>
+#include <game/system/Display.h>
 #include <game/asset/AssetsManager.h>
-#include <game/object/Cube.h>
-#include <game/component/Transform.h>
 
 static GameClient *mClient;
 
@@ -25,13 +24,10 @@ void GameClient::exit() {
     exiting = true;
 }
 
-Cube * cube;
-
-
 void GameClient::init() {
-    Window::update();//让初始化时就能获取窗口大小
+    Window::tick();
+    Display::init();
     AssetsManager::initAssets();
-
 
     //设置输入回调
     input->setKeyCallBack([this](int code, int mods, int action) {
@@ -45,12 +41,11 @@ void GameClient::init() {
     });
     loadScene(new Scene());
 
-    cube=new Cube();
-    cube->transform->rotation={-45,0,0};
-    currentScene->root->children.push_back(cube);
+
 }
 
 void GameClient::onExit() {
+    Display::free();
     AssetsManager::freeAssets();
     Env::cleanup();
 }
@@ -74,32 +69,18 @@ void GameClient::onMouseMove(float x, float y) {
 
 }
 
-void gameObjectsDFS(GameObject *gameObject){
-    for(auto component:gameObject->components)
-    {
-        if(!component->initialized)
-        {
-            component->init();
-            component->initialized= true;
-        }
-        component->tick();
-    }
-
-    for(auto child:gameObject->children)
-        gameObjectsDFS(child);
-}
-
 void GameClient::tick() {
-    Time::update();
-    Window::update();
+    Time::tick();
+    Window::tick();
     Env::renderStart();
     Env::clearColor(glm::vec4(1, 1, 1, 1));
-    gameObjectsDFS(currentScene->root);
+    if (currentScene)currentScene->tick();
     Env::renderEnd();
 }
 
 void GameClient::loadScene(Scene *scene) {
     this->currentScene = scene;
+    scene->init();
 }
 
 Input *GameClient::getInput() {

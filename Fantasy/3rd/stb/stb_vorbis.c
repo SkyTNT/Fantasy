@@ -3388,7 +3388,7 @@ static int vorbis_decode_packet_rest(vorb *f, int *len, Mode *m, int left_start,
    } else if (f->previous_length == 0 && f->current_loc_valid) {
       // we're recovering from a seek... that means we're going to discard
       // the samples from this packet even though we know our position from
-      // the last page header, so we need to update the position based on
+      // the last page header, so we need to tick the position based on
       // the discarded samples here
       // but wait, the code below is going to add this in itself even
       // on a discard, so we don't need to do it here...

@@ -2,7 +2,7 @@
 
 class Window {
 public:
-    static void update();
+    static void tick();
 
     static int width,height;
 

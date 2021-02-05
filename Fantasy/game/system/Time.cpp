@@ -6,7 +6,7 @@ long Time::time = 0;
 double Time::deltaTime = 0;
 double Time::timeScale = 1;
 
-void Time::update() {
+void Time::tick() {
     //计算间隔时间
     long now = clock();
     long dTimeMs = now - time;

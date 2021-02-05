@@ -10,7 +10,6 @@ public:
 	void init() override;
 	void tick() override;
     glm::mat4 getMatrix();
-
 public:
 	glm::vec3 position, rotation, scale;
 private:

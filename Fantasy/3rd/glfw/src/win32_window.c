@@ -1281,7 +1281,7 @@ static int createNativeWindow(_GLFWwindow* window,
         else
             AdjustWindowRectEx(&rect, style, FALSE, exStyle);
 
-        // Only update the restored window rect as the window may be maximized
+        // Only tick the restored window rect as the window may be maximized
         GetWindowPlacement(window->win32.handle, &wp);
         wp.rcNormalPosition = rect;
         wp.showCmd = SW_HIDE;

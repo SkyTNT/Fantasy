@@ -5,7 +5,7 @@
 #include "../asset/Material.h"
 #include "../asset/Mesh.h"
 #include <glm/gtc/matrix_transform.hpp>
-#include "../system/Window.h"
+#include "../system/Display.h"
 
 MeshRender::MeshRender(GameObject *gameObject) : Component(gameObject) {
     material= nullptr;
@@ -20,8 +20,8 @@ void MeshRender::tick() {
     if (!meshFilter||!meshFilter->mesh||!material)
         return;
     auto mesh=meshFilter->mesh;
-    material->set("projection", glm::perspective(glm::radians(45.0f), Window::width * 1.0f / Window::height, 0.1f, 100.0f));
-    material->set("view", glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f)));
+    material->set("projection", Display::current->projection);
+    material->set("view", Display::current->view);
     material->set("model", gameObject->transform->getMatrix());
 
     material->use();
