@@ -6,7 +6,7 @@ std::string getLocalTime();
 
 #ifdef __ANDROID__
 #include <android/log.h>
-#define LOG_BASE(l,t,s) __android_log_write(l, t.c_str(), s.c_str());
+void LOG_BASE(android_LogPriority logPriority,const std::string &tag,const std::string &text);
 #define I ANDROID_LOG_INFO
 #define W ANDROID_LOG_WARN
 #define E ANDROID_LOG_ERROR

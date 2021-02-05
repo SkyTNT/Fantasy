@@ -53,3 +53,8 @@ std::string getLocalTime()
 	return result;
 }
 
+#ifdef __ANDROID__
+void LOG_BASE(android_LogPriority logPriority,const std::string &tag,const std::string &text){
+	__android_log_write(logPriority, tag.c_str(), text.c_str());
+}
+#endif

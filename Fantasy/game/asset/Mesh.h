@@ -20,9 +20,11 @@ public:
     void setIndices(unsigned int count,unsigned int *indices);
     //配置完成后调用
     void finish();
-
+    //获取绘制对象
     unsigned int getObject();
+    //是否有索引
     bool hasIndices();
+    //获取顶点数或者索引数
     unsigned int getCount();
 
 private:

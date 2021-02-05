@@ -7,17 +7,20 @@
 #include <cstring>
 #include <env/Environment.h>
 #include <client/GameClient.h>
+#include <game/scene/TestScene.h>
 #include <utils/Utils.h>
 
 static GameClient*client;
+static TestScene* testScene;
 
 static void onSurfaceCreated(GLFMDisplay *display, int width, int height) {
 
     client=new GameClient();
+    testScene=new TestScene();
     Env::setup(display);
     Env::windowResize(width,height);
     client->init();
-
+    client->loadScene(testScene);
 }
 
 static void onSurfaceResize(GLFMDisplay *display, int width, int height) {
@@ -26,12 +29,12 @@ static void onSurfaceResize(GLFMDisplay *display, int width, int height) {
 
 static void onSurfaceDestroyed(GLFMDisplay *display) {
     client->exit();
+    delete testScene;
     delete client;
 }
 
 static void onFrame(GLFMDisplay *display) {
     client->tick();
-    client->render();
 }
 
 void glfmMain(GLFMDisplay *display) {

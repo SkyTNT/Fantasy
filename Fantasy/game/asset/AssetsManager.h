@@ -3,6 +3,7 @@
 #include <map>
 #include "Asset.h"
 
+//资源管理器
 class AssetsManager {
 public:
     //加载初始资源

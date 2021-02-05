@@ -2,6 +2,7 @@
 #include <game/object/Cube.h>
 #include <game/object/CameraObject.h>
 #include <game/component/Transform.h>
+#include "../system/Time.h"
 
 Cube * cube,*cube2;
 CameraObject *cameraObject;
@@ -35,4 +36,5 @@ void TestScene::init() {
 
 void TestScene::tick() {
     Scene::tick();
+    cube2->transform->rotation={1.0f*Time::time/1000, 0, 0};
 }
