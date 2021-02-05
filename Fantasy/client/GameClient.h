@@ -1,7 +1,7 @@
 #pragma once
 #include <env/Environment.h>
 #include "input/Input.h"
-#include <game/asset/Scene.h>
+#include <game/scene/Scene.h>
 
 class GameClient
 {
@@ -16,8 +16,6 @@ public:
 
     //帧事件
 	void tick();
-	// 渲染
-	void render();
 	//加载场景
 	void loadScene(Scene *scene);
 

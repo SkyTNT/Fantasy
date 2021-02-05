@@ -1,20 +1,27 @@
 #pragma once
+#include <string>
+#include <iostream>
 
-#include<string>
+std::string getLocalTime();
 
-using namespace std;
+#ifdef __ANDROID__
+#include <android/log.h>
+#define LOG_BASE(l,t,s) __android_log_write(l, t.c_str(), s.c_str());
+#define I ANDROID_LOG_INFO
+#define W ANDROID_LOG_WARN
+#define E ANDROID_LOG_ERROR
+#else
+#define LOG_BASE(l,t,s) std::cout << "["#l"]" << getLocalTime() <<"[" << t << "]"<<"[" << __FILE__ << "]:\t" << s << "\n";
+#endif
 
+#define LOG_I(t,s) LOG_BASE(I,t,s)
+#define LOG_W(t,s) LOG_BASE(W,t,s)
+#define LOG_E(t,s) LOG_BASE(E,t,s)
 
-string i2s(int i);
-string f2s(float fl);
-string d2s(double d);
+std::string i2s(int i);
+std::string f2s(float fl);
+std::string d2s(double d);
 
-int s2i(string s);
+int s2i(std::string s);
 
-void LOG_I(string str);
-void LOG_W(string str);
-void LOG_E(string str);
-void LOG_I(string tag, string str);
-void LOG_W(string tag, string str);
-void LOG_E(string tag, string str);
 

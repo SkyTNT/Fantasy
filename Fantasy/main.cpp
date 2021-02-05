@@ -36,7 +36,7 @@ int main(int argNum,char**args)
     //glfwSetWindowIcon(window, 1, );
     if (window == NULL)
     {
-        LOG_E("Failed to create GLFW window");
+        LOG_E("Main","Failed to create GLFW window");
         glfwTerminate();
         return -1;
     }
@@ -55,7 +55,6 @@ int main(int argNum,char**args)
     while (!mClient->needExiting())
     {
         mClient->tick();
-        mClient->render();
     }
 	delete mClient;
 	return 0;

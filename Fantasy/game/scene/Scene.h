@@ -1,6 +1,6 @@
 #pragma once
-#include "../object/GameObject.h"
-#include "Asset.h"
+#include "game/object/GameObject.h"
+#include "game/asset/Asset.h"
 class Scene: public Asset {
 public:
     Scene();
@@ -9,7 +9,6 @@ public:
     void init();
 
 public:
-    std::vector<GameObject*> gameObjects;
-
+    GameObject *root;
 };
 

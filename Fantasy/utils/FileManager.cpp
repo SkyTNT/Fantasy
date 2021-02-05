@@ -58,7 +58,7 @@ std::string FileManager::loadText(const std::string &path) {
         fread(fstr, length, 1, file);
         fstr[length] = 0;
         fclose(file);
-        string ret(fstr);
+        std::string ret(fstr);
         delete[] fstr;
         return ret;
     }

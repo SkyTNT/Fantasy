@@ -165,22 +165,22 @@ namespace Env {
         glDeleteProgram(shader);
     }
 
-    void setUniform(unsigned int shader, const string &name, float val) {
+    void setUniform(unsigned int shader, const std::string &name, float val) {
         int location = glGetUniformLocation(shader, name.c_str());
         glUniform1f(location, val);
     }
 
-    void setUniform(unsigned int shader, const string &name, const glm::vec2 &val) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::vec2 &val) {
         int location = glGetUniformLocation(shader, name.c_str());
         glUniform2fv(location, 1, &val[0]);
     }
 
-    void setUniform(unsigned int shader, const string &name, const glm::vec3 &val) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::vec3 &val) {
         int location = glGetUniformLocation(shader, name.c_str());
         glUniform3fv(location, 1, &val[0]);
     }
 
-    void setUniform(unsigned int shader, const string &name, const glm::vec4 &val) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::vec4 &val) {
         int location = glGetUniformLocation(shader, name.c_str());
         glUniform4fv(location, 1, &val[0]);
     }
@@ -226,7 +226,7 @@ namespace Env {
 
 #undef __setMatrix
 
-    void setTexture(unsigned int shader, const string &name, unsigned int index) {
+    void setTexture(unsigned int shader, const std::string &name, unsigned int index) {
         glUniform1i(glGetUniformLocation(shader, name.c_str()), index);
     }
 

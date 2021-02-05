@@ -30,4 +30,8 @@ void Transform::init() {
 
 }
 
+glm::mat4 Transform::getMatrix() {
+    return matrix;
+}
+
 

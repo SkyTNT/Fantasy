@@ -13,7 +13,10 @@ GameObject::GameObject()
 
 GameObject::~GameObject()
 {
-	delete transform;
+    for (auto component:components)
+    {
+        delete component;
+    }
 }
 
 Component* GameObject::getComponent(const std::type_info &info) {

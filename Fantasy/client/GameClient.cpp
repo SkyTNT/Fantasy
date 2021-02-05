@@ -3,10 +3,8 @@
 #include <game/system/Time.h>
 #include <game/system/Window.h>
 #include <game/asset/AssetsManager.h>
-#include <game/asset/Shader.h>
-#include <game/asset/Material.h>
-#include <game/asset/Mesh.h>
-#include <glm/gtc/matrix_transform.hpp>
+#include <game/object/Cube.h>
+#include <game/component/Transform.h>
 
 static GameClient *mClient;
 
@@ -27,9 +25,8 @@ void GameClient::exit() {
     exiting = true;
 }
 
-Shader *shader;
-Material *material;
-Mesh *mesh;
+Cube * cube;
+
 
 void GameClient::init() {
     Window::update();//让初始化时就能获取窗口大小
@@ -46,14 +43,11 @@ void GameClient::init() {
     input->setMouseMoveCallBack([this](float x, float y) {
         onMouseMove(x, y);
     });
+    loadScene(new Scene());
 
-    shader = (Shader *)AssetsManager::getAsset("shader/tr");
-    mesh = (Mesh*)AssetsManager::getAsset("mesh/cube");
-    material = (Material*)AssetsManager::getAsset("material/cube");
-
-    material->set("projection", glm::perspective(glm::radians(45.0f), Window::width * 1.0f / Window::height, 0.1f, 100.0f));
-    material->set("view", glm::translate(glm::mat4(1.0f), glm::vec3(0.0f, 0.0f, -3.0f)));
-    material->set("model", glm::rotate(glm::mat4(1.0f), glm::radians(-55.0f), glm::vec3(1.0f, 0.0f, 0.0f)));
+    cube=new Cube();
+    cube->transform->rotation={-45,0,0};
+    currentScene->root->children.push_back(cube);
 }
 
 void GameClient::onExit() {
@@ -80,17 +74,27 @@ void GameClient::onMouseMove(float x, float y) {
 
 }
 
+void gameObjectsDFS(GameObject *gameObject){
+    for(auto component:gameObject->components)
+    {
+        if(!component->initialized)
+        {
+            component->init();
+            component->initialized= true;
+        }
+        component->tick();
+    }
+
+    for(auto child:gameObject->children)
+        gameObjectsDFS(child);
+}
+
 void GameClient::tick() {
     Time::update();
     Window::update();
-}
-
-
-void GameClient::render() {
     Env::renderStart();
     Env::clearColor(glm::vec4(1, 1, 1, 1));
-    material->use();
-    Env::drawObject(mesh->getObject(), mesh->getCount(), Env::DrawType::Triangle, mesh->hasIndices());
+    gameObjectsDFS(currentScene->root);
     Env::renderEnd();
 }
 
