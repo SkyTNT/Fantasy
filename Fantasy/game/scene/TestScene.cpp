@@ -3,6 +3,7 @@
 #include <game/object/CameraObject.h>
 #include <game/component/Camera.h>
 #include <game/component/Transform.h>
+#include <game/component/MoveController.h>
 #include "../system/Time.h"
 #include <utils/Utils.h>
 
@@ -29,8 +30,9 @@ void TestScene::init() {
     cube->transform->position = {0.5, 0.5, 0};
     cube2->transform->position = {-1, 0, 0};
     cube->transform->rotation.z=-45;
-    cameraObject->transform->position = {3, 3, 3};
-    cameraObject->transform->rotation = {-45, 45, 0};
+    cameraObject->transform->position = {0, 0, 3};
+    //cameraObject->transform->rotation = {-45, 45, 0};
+    cameraObject->components.push_back(new MoveController(cameraObject));
     root->children.push_back(cube);
     root->children.push_back(cube2);
     root->children.push_back(cameraObject);

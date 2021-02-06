@@ -1,22 +1,22 @@
 #include "GameClient.h"
 #include <utils/Utils.h>
+#include <env/Environment.h>
 #include <game/system/Time.h>
 #include <game/system/Window.h>
 #include <game/system/Display.h>
+#include <game/system/Input.h>
 #include <game/asset/AssetsManager.h>
+#include <game/scene/Scene.h>
 
-static GameClient *mClient;
+static GameClient *mClient= nullptr;
 
-GameClient::GameClient() : exiting(false) {
+GameClient::GameClient() : exiting(false),currentScene(nullptr) {
     mClient = this;
-    currentScene = nullptr;
-    input = new Input();
 }
 
 
 GameClient::~GameClient() {
     onExit();
-    delete input;
 }
 
 
@@ -26,20 +26,9 @@ void GameClient::exit() {
 
 void GameClient::init() {
     Window::tick();
+    Input::init();
     Display::init();
     AssetsManager::initAssets();
-
-    //设置输入回调
-    input->setKeyCallBack([this](int code, int mods, int action) {
-        onKeyEvent(code, mods, action);
-    });
-    input->setMouseKeyCallBack([this](int code, int mods, int action) {
-        onMouseKeyEvent(code, mods, action);
-    });
-    input->setMouseMoveCallBack([this](float x, float y) {
-        onMouseMove(x, y);
-    });
-    loadScene(new Scene());
 }
 
 void GameClient::onExit() {
@@ -49,28 +38,11 @@ void GameClient::onExit() {
 }
 
 
-void GameClient::onKeyEvent(int code, int mods, int action) {
-    switch (code) {
-        case INPUT_KEY_ESCAPE:
-            exit();
-            break;
-        default:
-            break;
-    }
-}
-
-void GameClient::onMouseKeyEvent(int code, int mods, int action) {
-
-}
-
-void GameClient::onMouseMove(float x, float y) {
-
-}
-
 void GameClient::tick() {
     Env::renderStart();
     Time::tick();
     Window::tick();
+    Input::tick();
     Display::tick();
     if (currentScene)currentScene->tick();
     Env::renderEnd();
@@ -81,14 +53,16 @@ void GameClient::loadScene(Scene *scene) {
     scene->init();
 }
 
-Input *GameClient::getInput() {
-    return input;
-}
-
 bool GameClient::needExiting() {
     return exiting;
 }
 
 GameClient *GameClient::getGameClient() {
+    if (!mClient)
+    {
+        mClient = new GameClient();
+        mClient->init();
+    }
     return mClient;
 }
+

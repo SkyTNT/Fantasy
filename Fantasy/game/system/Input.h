@@ -1,33 +1,33 @@
 #pragma once
+#include <functional>
+#include <glm/glm.hpp>
 
-#include<string>
-#include<functional>
-
-
-//输入类
 class Input {
 public:
-    Input();
 
-    ~Input();
+    static void init();
+    static void tick();
+    static bool getKey(int code);
+    static void pressKey(int code);
+    static void releaseKey(int code);
+    static glm::vec2 getCursor();
+    static void setCursor(float x, float  y);
+    static void lockCursor();
+    static void unlockCursor();
+    static glm::vec2 getAxis();
 
-    void sendKeyEvent(int code, int mods, int action);//发送键盘按键事件
-    void sendMouseKeyEvent(int code, int mods, int action);//发送鼠标按键事件
-    void sendMouseMove(float x, float y);//发送鼠标位置变化
-
-    void setKeyCallBack(std::function<void(int, int, int)> keyCallBack);
-
-    void setMouseKeyCallBack(std::function<void(int, int, int)> mouseKeyCallBack);
-
-    void setMouseMoveCallBack(std::function<void(float, float)> mouseKPosCallBack);
-
+public:
+    static glm::vec2 cursor,cursorVelocity;
+    static std::function<void(float,float)> setCursorReal;
 private:
-    std::function<void(int, int, int)> keyCallBack;
-    std::function<void(int, int, int)> mouseKeyCallBack;
-    std::function<void(float, float)> mouseMoveCallBack;
+    static glm::vec2 cursorLockPos;
+    static bool cursorLocked;
+    static bool keyState[1000];
+    static glm::vec2 axis;
 };
 
 
+//参考于glfw3.h
 //键盘部分
 #define INPUT_KEY_UNKNOWN            -1
 
@@ -155,14 +155,6 @@ private:
 #define INPUT_KEY_RIGHT_SUPER        347
 #define INPUT_KEY_MENU               348
 
-#define INPUT_MOD_SHIFT           0x0001
-#define INPUT_MOD_CONTROL         0x0002
-#define INPUT_MOD_ALT             0x0004
-#define INPUT_MOD_SUPER           0x0008
-#define INPUT_MOD_CAPS_LOCK       0x0010
-#define INPUT_MOD_NUM_LOCK        0x0020
-
-
 //鼠标部分
 #define INPUT_MOUSE_BUTTON_1         0
 #define INPUT_MOUSE_BUTTON_2         1
@@ -176,9 +168,3 @@ private:
 #define INPUT_MOUSE_BUTTON_LEFT      INPUT_MOUSE_BUTTON_1
 #define INPUT_MOUSE_BUTTON_RIGHT     INPUT_MOUSE_BUTTON_2
 #define INPUT_MOUSE_BUTTON_MIDDLE    INPUT_MOUSE_BUTTON_3
-
-
-//动作
-#define INPUT_RELEASE                0
-#define INPUT_PRESS                  1
-#define INPUT_REPEAT                 2

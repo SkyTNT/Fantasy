@@ -1,9 +1,10 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
-#include <client/input/Input.h>
 #include <client/GameClient.h>
 #include <utils/Utils.h>
+#include <env/Environment.h>
 #include <game/scene/TestScene.h>
+#include <game/system/Input.h>
 
 
 //½ûÓÃ¿ØÖÆÌ¨
@@ -19,7 +20,22 @@ static void framebuffer_size_callback(GLFWwindow* window,int width,int height) {
 
 static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
-    mClient->getInput()->sendKeyEvent(key, mods, action);
+    if (action==GLFW_PRESS)
+        Input::pressKey(key);
+    else if (action==GLFW_RELEASE)
+        Input::releaseKey(key);
+}
+
+static void mouseButtonCallback(GLFWwindow* window, int button, int action, int mods){
+    if (action==GLFW_PRESS)
+        Input::pressKey(button);
+    else if (action==GLFW_RELEASE)
+        Input::releaseKey(button);
+}
+
+static void cursorCallback(GLFWwindow* window, double x, double y){
+    Input::cursor.x = x;
+    Input::cursor.y = y;
 }
 
 static void closeCallback(GLFWwindow* window)
@@ -46,20 +62,27 @@ int main(int argNum,char**args)
     glfwMakeContextCurrent(window);
     glfwSetFramebufferSizeCallback(window,framebuffer_size_callback);
     glfwSetKeyCallback(window, keyCallback);
+    glfwSetMouseButtonCallback(window,mouseButtonCallback);
+    glfwSetCursorPosCallback(window,cursorCallback);
     glfwSetWindowCloseCallback(window, closeCallback);
     Env::setup(window);
     Env::windowResize(1600,800);
 
-    mClient = new GameClient();
+    mClient = GameClient::getGameClient();
     testScene=new TestScene();
 
-	mClient->init();
+	Input::setCursorReal=[](float x,float y){
+	    glfwSetCursorPos(window,x,y);
+	};
 	mClient->loadScene(testScene);
 
     while (!mClient->needExiting())
     {
+
         mClient->tick();
+
     }
+
 	delete mClient;
     delete testScene;
 	return 0;
