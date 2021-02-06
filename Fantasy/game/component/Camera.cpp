@@ -6,7 +6,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 
 Camera::Camera(GameObject *gameObject) : Component(gameObject) {
-    clearColor = {0, 0, 0};
+    clearColor = {0, 0, 0,1};
     viewField = 45;
     near = 0.1f;
     far = 1000;
@@ -32,6 +32,7 @@ void Camera::tick() {
     if (display < 8) {
         Display::displays[display]->projection = projection;
         Display::displays[display]->view = view;
+        Display::displays[display]->clearColor = clearColor;
     }
 }
 

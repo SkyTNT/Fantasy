@@ -14,7 +14,7 @@ public:
 
 public:
     //清屏色
-    glm::vec3 clearColor;
+    glm::vec4 clearColor;
     //视野，裁剪空间
     float viewField, near, far;
     //显示id

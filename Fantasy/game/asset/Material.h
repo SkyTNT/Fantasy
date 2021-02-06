@@ -18,6 +18,7 @@ public:
 
     //设置使用的着色器
     void setShader(Shader *shader);
+    Shader* getShader();
 
     //设置材质属性
     void set(const std::string &name, float val);

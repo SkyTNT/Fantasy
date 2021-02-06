@@ -13,6 +13,7 @@
 #include "Environment.h"
 
 static glm::ivec2 windowSize;
+static glm::mat4 projection, view, model;
 static int drawTypeMap[20], attribTypeMap[20], memTypeMap[20], colorTypeMap[20], wrapTypeMap[20], filterTypeMap[20];
 
 #ifdef __ANDROID__
@@ -37,6 +38,10 @@ namespace Env {
             return false;
         }
 #endif
+        projection = view = model = glm::mat4(1);
+
+        glEnable(GL_DEPTH_TEST);
+
         //初始化绘制类型的映射
         drawTypeMap[DrawType::Point] = GL_POINTS;
         drawTypeMap[DrawType::Line] = GL_LINES;
@@ -88,6 +93,7 @@ namespace Env {
     }
 
     void renderStart() {
+        glClear(GL_COLOR_BUFFER_BIT|GL_DEPTH_BUFFER_BIT);
     }
 
     void renderEnd() {
@@ -99,9 +105,8 @@ namespace Env {
 #endif
     }
 
-    void clearColor(glm::vec4 rgba) {
+    void setClearColor(const glm::vec4 &rgba){
         glClearColor(rgba.r, rgba.g, rgba.b, rgba.a);
-        glClear(GL_COLOR_BUFFER_BIT);
     }
 
     unsigned int createShader(std::string vertexShader, std::string fragmentShader) {
@@ -159,10 +164,26 @@ namespace Env {
 
     void useShader(unsigned int shader) {
         glUseProgram(shader);
+
+        setUniform(shader, "projection", projection);
+        setUniform(shader, "view", view);
+        setUniform(shader, "model", model);
     }
 
     void delShader(unsigned int shader) {
         glDeleteProgram(shader);
+    }
+
+    void setProjection(const glm::mat4 &val) {
+        projection = val;
+    }
+
+    void setView(const glm::mat4 &val) {
+        view = val;
+    }
+
+    void setModel(const glm::mat4 &val) {
+        model = val;
     }
 
     void setUniform(unsigned int shader, const std::string &name, float val) {
@@ -186,41 +207,41 @@ namespace Env {
     }
 
 #define __setMatrix(size)   int location = glGetUniformLocation(shader, name.c_str());\
-                            glUniformMatrix##size##fv(location,1,transpose,&val[0][0]);
+                            glUniformMatrix##size##fv(location,1,GL_FALSE,&val[0][0]);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat2 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat2 &val) {
         __setMatrix(2)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x3 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x3 &val) {
         __setMatrix(2x3)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x4 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x4 &val) {
         __setMatrix(2x4)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat3 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat3 &val) {
         __setMatrix(3)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x2 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x2 &val) {
         __setMatrix(3x2)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x4 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x4 &val) {
         __setMatrix(3x4)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat4 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat4 &val) {
         __setMatrix(4)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x2 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x2 &val) {
         __setMatrix(4x2)
     }
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val, bool transpose) {
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val) {
         __setMatrix(4x3)
     }
 

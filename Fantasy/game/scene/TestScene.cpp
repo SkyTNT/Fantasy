@@ -1,6 +1,7 @@
 #include "TestScene.h"
 #include <game/object/Cube.h>
 #include <game/object/CameraObject.h>
+#include <game/component/Camera.h>
 #include <game/component/Transform.h>
 #include "../system/Time.h"
 #include <utils/Utils.h>
@@ -25,11 +26,11 @@ void TestScene::init() {
     cube = new Cube();
     cube2 = new Cube();
     cameraObject = new CameraObject();
-    cube->transform->rotation = {-45, 0, 0};
-    cube->transform->position = {0, 0, -10};
-    cube2->transform->rotation = {-40, 0, 0};
+    cube->transform->position = {0.5, 0.5, 0};
     cube2->transform->position = {-1, 0, 0};
-    cameraObject->transform->position = {0, 0, 3};
+    cube->transform->rotation.z=-45;
+    cameraObject->transform->position = {3, 3, 3};
+    cameraObject->transform->rotation = {-45, 45, 0};
     root->children.push_back(cube);
     root->children.push_back(cube2);
     root->children.push_back(cameraObject);
@@ -37,6 +38,6 @@ void TestScene::init() {
 
 void TestScene::tick() {
     Scene::tick();
-    LOG_I("Time",f2s(Time::deltaTime));
-    cube2->transform->rotation.x+=10*Time::deltaTime;
+    cube->transform->rotation.y+=50*Time::deltaTime;
+    cube2->transform->rotation.x+=50*Time::deltaTime;
 }

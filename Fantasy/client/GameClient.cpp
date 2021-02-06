@@ -68,10 +68,10 @@ void GameClient::onMouseMove(float x, float y) {
 }
 
 void GameClient::tick() {
+    Env::renderStart();
     Time::tick();
     Window::tick();
-    Env::renderStart();
-    Env::clearColor(glm::vec4(1, 1, 1, 1));
+    Display::tick();
     if (currentScene)currentScene->tick();
     Env::renderEnd();
 }

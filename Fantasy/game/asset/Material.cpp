@@ -20,6 +20,11 @@ void Material::setShader(Shader *shader) {
     shaderID = shader->getShader();
 }
 
+Shader *Material::getShader() {
+    return shader;
+}
+
+
 //储存着色器Uniform
 void Material::set(const std::string &name, float val) {
     floatUniforms[name] = val;
@@ -84,50 +89,31 @@ void Material::set(const std::string &name, Texture2D *val) {
 
 }
 
+#define setUniforms(type)   for (const auto &it:type##Uniforms) {\
+                                Env::setUniform(shaderID, it.first, it.second);\
+                            }
+
 //使用着色器并设置uniform
 void Material::use() {
     Env::useShader(shaderID);
-    for (const auto &it:floatUniforms) {
-        Env::setUniform(shaderID, it.first, it.second);
-    }
-    for (const auto &it:vec2Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second);
-    }
-    for (const auto &it:vec3Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second);
-    }
-    for (const auto &it:vec4Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second);
-    }
-    for (const auto &it:mat2Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat2x3Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat2x4Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat3Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat3x2Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat3x4Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat4Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat4x2Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
-    for (const auto &it:mat4x3Uniforms) {
-        Env::setUniform(shaderID, it.first, it.second, false);
-    }
+    setUniforms(float)
+    setUniforms(vec2)
+    setUniforms(vec3)
+    setUniforms(vec4)
+    setUniforms(mat2)
+    setUniforms(mat2x3)
+    setUniforms(mat2x4)
+    setUniforms(mat3)
+    setUniforms(mat3x2)
+    setUniforms(mat3x4)
+    setUniforms(mat4)
+    setUniforms(mat4x2)
+    setUniforms(mat4x3)
+
     for (const auto &it:texture2DIndex) {
         Env::setTexture(shaderID, it.first, it.second);
         Env::bindTexture2D(it.second, texture2Ds[it.second]->getTexture());
     }
 }
+
+#undef setUniforms

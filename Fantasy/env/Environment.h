@@ -76,7 +76,7 @@ namespace Env {
     void renderEnd();
 
     //清屏色
-    void clearColor(glm::vec4 rgba);
+    void setClearColor(const glm::vec4 &rgba);
 
     //创建着色器程序（顶点着色器代码，片段着色器代码）
     unsigned int createShader(std::string vertexShader, std::string fragmentShader);
@@ -87,6 +87,15 @@ namespace Env {
     //删除着色器
     void delShader(unsigned int shader);
 
+    //设置投影矩阵
+    void setProjection(const glm::mat4 &val);
+
+    //设置观察矩阵
+    void setView(const glm::mat4 &val);
+
+    //设置模型矩阵
+    void setModel(const glm::mat4 &val);
+
     //设置着色器中的uniform变量
     void setUniform(unsigned int shader, const std::string &name, float val);
 
@@ -96,23 +105,23 @@ namespace Env {
 
     void setUniform(unsigned int shader, const std::string &name, const glm::vec4 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat2 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat2 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x3 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x3 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x4 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat2x4 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat3 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat3 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x2 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x2 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x4 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat3x4 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat4 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat4 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x2 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x2 &val);
 
-    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val, bool transpose);
+    void setUniform(unsigned int shader, const std::string &name, const glm::mat4x3 &val);
 
     //设置着色器中纹理为指定index
     void setTexture(unsigned int shader, const std::string &name, unsigned int index);
