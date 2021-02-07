@@ -3,8 +3,8 @@
 #include <climits>
 
 long Time::time = 0;
-double Time::deltaTime = 0;
-double Time::timeScale = 1;
+float Time::deltaTime = 0;
+float Time::timeScale = 1;
 long lastTime = 0;
 
 void Time::tick() {

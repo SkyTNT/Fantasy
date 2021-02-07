@@ -8,7 +8,7 @@ class Mesh;
 //Íø¸ñ×é¼þ
 class MeshFilter : public Component {
 public:
-    explicit MeshFilter(GameObject *gameObject);
+    MeshFilter();
 
     void init() override;
 

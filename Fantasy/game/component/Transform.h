@@ -6,7 +6,7 @@
 //变换（物体基本属性）
 class Transform : public Component {
 public:
-    explicit Transform(GameObject *gameObject);
+    Transform();
 
     ~Transform() override;
 

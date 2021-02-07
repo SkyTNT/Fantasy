@@ -5,7 +5,7 @@
 #include "../object/GameObject.h"
 #include <glm/gtc/matrix_transform.hpp>
 
-Camera::Camera(GameObject *gameObject) : Component(gameObject) {
+Camera::Camera() : Component() {
     clearColor = {0, 0, 0,1};
     viewField = 45;
     near = 0.1f;

@@ -5,8 +5,8 @@
 
 GameObject::GameObject() {
     parent = nullptr;
-    transform = new Transform(this);
-    components.push_back(transform);
+    transform = new Transform();
+    addComponent(transform);
 }
 
 
@@ -22,4 +22,14 @@ Component *GameObject::getComponent(const std::type_info &info) {
             return component;
     }
     return nullptr;
+}
+
+void GameObject::addComponent(Component *component) {
+    component->gameObject= this;
+    components.push_back(component);
+}
+
+void GameObject::addChild(GameObject *child) {
+    child->parent= this;
+    children.push_back(child);
 }

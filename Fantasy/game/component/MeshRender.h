@@ -7,7 +7,7 @@ class Material;
 //Íø¸ñäÖÈ¾Æ÷
 class MeshRender : public Component {
 public:
-    explicit MeshRender(GameObject *gameObject);
+    MeshRender();
 
     void init() override;
 

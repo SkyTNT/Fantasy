@@ -19,11 +19,17 @@ void Input::init() {
 }
 
 void Input::tick() {
-    cursorVelocity=cursor-lastCursor;
-    lastCursor=cursor;
 
     if (cursorLocked)
+    {
+        cursorVelocity=cursor-cursorLockPos;
         setCursor(cursorLockPos.x,cursorLockPos.y);
+    } else
+    {
+        cursorVelocity=cursor-lastCursor;
+    }
+
+    lastCursor=cursor;
 }
 
 bool Input::getKey(int code) {

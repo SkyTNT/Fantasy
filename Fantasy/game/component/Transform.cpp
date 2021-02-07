@@ -1,8 +1,9 @@
 #include "Transform.h"
 #include "../object/GameObject.h"
 #include <glm/gtc/matrix_transform.hpp>
+#include <utils/Utils.h>
 
-Transform::Transform(GameObject *gameObject) : Component(gameObject) {
+Transform::Transform() : Component() {
     matrix = glm::mat4(1);
     position = rotation = {0, 0, 0};
     scale = {1, 1, 1};
@@ -24,7 +25,10 @@ void Transform::tick() {
     matrix = glm::scale(matrix, scale);
 
     if (gameObject->parent)
+    {
         matrix = gameObject->parent->transform->matrix * matrix;
+    }
+
 }
 
 void Transform::init() {

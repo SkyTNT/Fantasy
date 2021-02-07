@@ -16,6 +16,9 @@ public:
 
     //获取组件，info: typeid(Component class)
     Component *getComponent(const std::type_info &info);
+    void addComponent(Component *component);
+
+    void addChild(GameObject *child);
 
 public:
     GameObject *parent;

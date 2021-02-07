@@ -1,6 +1,6 @@
 #include "MeshFilter.h"
 
-MeshFilter::MeshFilter(GameObject *gameObject) : Component(gameObject) {
+MeshFilter::MeshFilter() : Component() {
     mesh = nullptr;
 }
 

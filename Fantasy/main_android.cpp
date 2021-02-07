@@ -6,7 +6,7 @@
 #include <glfm.h>
 #include <cstring>
 #include <env/Environment.h>
-#include <client/GameClient.h>
+#include <game/GameClient.h>
 #include <game/scene/TestScene.h>
 #include <utils/Utils.h>
 

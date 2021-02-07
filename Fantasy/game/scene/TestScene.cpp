@@ -9,17 +9,20 @@
 
 Cube *cube, *cube2;
 CameraObject *cameraObject;
+GameObject *head;
 
 TestScene::TestScene() : Scene() {
     cube = nullptr;
     cube2 = nullptr;
     cameraObject = nullptr;
+    head = nullptr;
 }
 
 TestScene::~TestScene() {
     delete cube;
     delete cube2;
     delete cameraObject;
+    delete head;
 }
 
 void TestScene::init() {
@@ -27,15 +30,17 @@ void TestScene::init() {
     cube = new Cube();
     cube2 = new Cube();
     cameraObject = new CameraObject();
+    head = new GameObject();
     cube->transform->position = {0.5, 0.5, 0};
     cube2->transform->position = {-1, 0, 0};
     cube->transform->rotation.z=-45;
-    cameraObject->transform->position = {0, 0, 3};
-    //cameraObject->transform->rotation = {-45, 45, 0};
-    cameraObject->components.push_back(new MoveController(cameraObject));
-    root->children.push_back(cube);
-    root->children.push_back(cube2);
-    root->children.push_back(cameraObject);
+    cameraObject->transform->rotation = {0, 0, 0};
+    cameraObject->transform->position={0,0,3};
+    cameraObject->addComponent(new MoveController());
+    //head->addChild(cameraObject);
+    root->addChild(cameraObject);
+    root->addChild(cube);
+    root->addChild(cube2);
 }
 
 void TestScene::tick() {

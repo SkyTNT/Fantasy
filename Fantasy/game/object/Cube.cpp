@@ -4,12 +4,12 @@
 #include "../asset/AssetsManager.h"
 
 Cube::Cube() {
-    auto meshFilter = new MeshFilter(this);
+    auto meshFilter = new MeshFilter();
     meshFilter->mesh = (Mesh *) AssetsManager::getAsset("mesh/cube");
-    components.push_back(meshFilter);
-    auto meshRender = new MeshRender(this);
+    addComponent(meshFilter);
+    auto meshRender = new MeshRender();
     meshRender->material = (Material *) AssetsManager::getAsset("material/cube");
-    components.push_back(meshRender);
+    addComponent(meshRender);
 }
 
 Cube::~Cube() {

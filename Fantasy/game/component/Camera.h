@@ -6,7 +6,7 @@
 //Па»ъ
 class Camera : public Component {
 public:
-    explicit Camera(GameObject *gameObject);
+    Camera();
 
     void init() override;
 

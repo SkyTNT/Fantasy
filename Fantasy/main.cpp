@@ -1,6 +1,6 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
-#include <client/GameClient.h>
+#include <game/GameClient.h>
 #include <utils/Utils.h>
 #include <env/Environment.h>
 #include <game/scene/TestScene.h>

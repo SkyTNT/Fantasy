@@ -6,7 +6,7 @@ class GameObject;
 class Component {
 public:
 
-    explicit Component(GameObject *gameObject);
+    Component();
 
     virtual ~Component();
 
@@ -21,5 +21,5 @@ public:
 protected:
     GameObject *gameObject;
 
-
+    friend GameObject;
 };
