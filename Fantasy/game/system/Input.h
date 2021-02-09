@@ -12,6 +12,7 @@ public:
     static void releaseKey(int code);
     static glm::vec2 getCursor();
     static void setCursor(float x, float  y);
+    static void cursorCallback(float x, float  y);
     static void lockCursor();
     static void unlockCursor();
     static glm::vec2 getAxis();

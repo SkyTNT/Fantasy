@@ -14,13 +14,10 @@ public:
 
 public:
     //清屏色
-    glm::vec4 clearColor;
+    glm::vec4 clearColor = {0, 0, 0,1};
     //视野，裁剪空间
-    float viewField, near, far;
+    float viewField = 45, near = 0.1f, far = 1000;
     //显示id
-    unsigned int display;
+    unsigned int display = 0;
 
-private:
-    //投影矩阵,观察矩阵
-    glm::mat4 projection, view;
 };

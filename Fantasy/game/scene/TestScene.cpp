@@ -30,14 +30,13 @@ void TestScene::init() {
     cube = new Cube();
     cube2 = new Cube();
     cameraObject = new CameraObject();
-    head = new GameObject();
-    cube->transform->position = {0.5, 0.5, 0};
-    cube2->transform->position = {-1, 0, 0};
-    cube->transform->rotation.z=-45;
-    cameraObject->transform->rotation = {0, 0, 0};
-    cameraObject->transform->position={0,0,3};
+    cube->transform->setLocalPosition({0.5, 0.5, 0});
+    cube2->transform->setLocalPosition({-1, 0, 0});
+    cube->transform->setLocalEulerAngles({0,0,45});
+    cube2->transform->setLocalEulerAngles({0,0,0});
+
+    cameraObject->transform->setLocalPosition({0,0,-3});
     cameraObject->addComponent(new MoveController());
-    //head->addChild(cameraObject);
     root->addChild(cameraObject);
     root->addChild(cube);
     root->addChild(cube2);
@@ -45,6 +44,5 @@ void TestScene::init() {
 
 void TestScene::tick() {
     Scene::tick();
-    cube->transform->rotation.y+=50*Time::deltaTime;
-    cube2->transform->rotation.x+=50*Time::deltaTime;
+    cube->transform->setLocalEulerAngles(cube->transform->getLocalEulerAngles()+glm::vec3(0,50*Time::deltaTime,0));
 }

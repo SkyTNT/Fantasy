@@ -14,27 +14,17 @@ MoveController::~MoveController() {
 
 void MoveController::init() {
     Input::setCursor(Window::width/2,Window::height/2);
+    transform= gameObject->transform;
 }
 
 void MoveController::tick() {
-    yaw-=10*Input::cursorVelocity.x*Time::deltaTime;
-    pitch-=10*Input::cursorVelocity.y*Time::deltaTime;;
-    gameObject->transform->rotation.x=pitch;
-    gameObject->transform->rotation.y=yaw;
+    pitch += Input::cursorVelocity.y*5.0f*Time::deltaTime;
+    yaw += -Input::cursorVelocity.x*5.0f*Time::deltaTime;
+    transform->setLocalEulerAngles(glm::vec3(pitch,yaw,0));
 
-    center = {0,0,0,1};
-    right = {1,0,0,1};
-    front = {0,0,-1,1};
-    up = {0,1,0,1};
+    move = (-transform->getLeft()*Input::getAxis().x+transform->getForward()*Input::getAxis().y)*5.0f*Time::deltaTime;
+    transform->setLocalPosition(transform->getLocalPosition()+move);
 
-    glm::mat4 model = gameObject->transform->getMatrix();
-    right = model*right-model*center;
-    front = model*front-model*center;
-    up = model*up-model*center;
-    move = (right*Input::getAxis().x+front*Input::getAxis().y)*5.0f*Time::deltaTime;
-    gameObject->transform->position.x+=move.x;
-    gameObject->transform->position.y+=move.y;
-    gameObject->transform->position.z+=move.z;
 
     if (Input::getKey(INPUT_KEY_TAB))
         Input::unlockCursor();

@@ -12,7 +12,6 @@ MeshRender::MeshRender() : Component() {
 }
 
 void MeshRender::init() {
-    LOG_I("AAA","init");
 }
 
 void MeshRender::tick() {
@@ -21,7 +20,7 @@ void MeshRender::tick() {
     if (!meshFilter || !meshFilter->mesh || !material)
         return;
     auto mesh = meshFilter->mesh;
-    Env::setModel(gameObject->transform->getMatrix());
+    Env::setModel(gameObject->transform->getLocalToWorld());
     material->use();
-            Env::drawObject(mesh->getObject(), mesh->getCount(), Env::DrawType::Triangle, mesh->hasIndices());
+    Env::drawObject(mesh->getObject(), mesh->getCount(), Env::DrawType::Triangle, mesh->hasIndices());
 }

@@ -20,16 +20,6 @@ void Input::init() {
 
 void Input::tick() {
 
-    if (cursorLocked)
-    {
-        cursorVelocity=cursor-cursorLockPos;
-        setCursor(cursorLockPos.x,cursorLockPos.y);
-    } else
-    {
-        cursorVelocity=cursor-lastCursor;
-    }
-
-    lastCursor=cursor;
 }
 
 bool Input::getKey(int code) {
@@ -86,6 +76,23 @@ void Input::setCursor(float x, float  y) {
     cursor.y=y;
     setCursorReal(x,y);
 }
+
+void Input::cursorCallback(float x, float y) {
+    cursor.x=x;
+    cursor.y=y;
+
+    if (cursorLocked)
+    {
+        cursorVelocity=cursor-cursorLockPos;
+        setCursor(cursorLockPos.x,cursorLockPos.y);
+    } else
+    {
+        cursorVelocity=cursor-lastCursor;
+    }
+
+    lastCursor=cursor;
+}
+
 
 void Input::lockCursor() {
     cursorLockPos=cursor;

@@ -34,8 +34,7 @@ static void mouseButtonCallback(GLFWwindow* window, int button, int action, int 
 }
 
 static void cursorCallback(GLFWwindow* window, double x, double y){
-    Input::cursor.x = x;
-    Input::cursor.y = y;
+    Input::cursorCallback(x,y);
 }
 
 static void closeCallback(GLFWwindow* window)

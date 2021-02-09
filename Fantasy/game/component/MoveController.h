@@ -3,6 +3,8 @@
 #include "Component.h"
 #include <glm/glm.hpp>
 
+class Transform;
+
 class MoveController : public Component {
 public:
     MoveController();
@@ -12,7 +14,8 @@ public:
     void tick() override;
 
 private:
-    glm::vec4 center,right,front,up,move;
+    Transform *transform;
+    glm::vec3 move;
     float pitch,yaw;
 
 };
