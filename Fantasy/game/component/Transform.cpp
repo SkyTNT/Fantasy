@@ -1,5 +1,6 @@
 #include "Transform.h"
 #include "../object/GameObject.h"
+#include "../system/Time.h"
 #include <glm/gtc/matrix_transform.hpp>
 #include <utils/Utils.h>
 
@@ -13,35 +14,7 @@ Transform::Transform() : Component() {
     scale = {1, 1, 1};
 }
 
-
-Transform::~Transform() {
-
-}
-
 void Transform::tick() {
-
-
-    if (gameObject->parent){
-        position = gameObject->parent->transform->localToWorld * glm::vec4(localPosition,1);
-        rotation = gameObject->parent->transform->rotation*localRotation;
-
-    }
-    else{
-        position = localPosition;
-        rotation = localRotation;
-    }
-
-    left = rotation*glm::vec3{1,0,0};
-    forward = rotation*glm::vec3{0,0,1};
-    up = rotation*glm::vec3{0 ,1 ,1};
-
-    //先缩放，后旋转，最后位移
-    localToWorld = glm::mat4(1);
-    localToWorld = glm::translate(localToWorld, position);
-    localToWorld = localToWorld* glm::mat4_cast(rotation);
-    localToWorld = glm::scale(localToWorld, scale);
-
-    worldToLocal = glm::inverse(localToWorld);
 
 }
 
@@ -90,32 +63,67 @@ const glm::mat4 &Transform::getWorldToLocal() {
     return worldToLocal;
 }
 
-void Transform::translate(const glm::vec3 &translation, Transform *relativeTo) {
-    if (!relativeTo)
-        relativeTo = this;
-
-}
-
 void Transform::setPosition(const glm::vec3 &val) {
-    position = val;
+    position = localPosition = val;
+    if (gameObject->parent)
+        localPosition = gameObject->parent->transform->worldToLocal * glm::vec4(position,1);
+    recalculate();
 }
 
 void Transform::setEulerAngles(const glm::vec3 &val) {
-    eulerAngles = val;
+    eulerAngles = localEulerAngles = val;
+    rotation = localRotation = glm::qua<float>(glm::radians(eulerAngles));
+    if (gameObject->parent){
+        localRotation = glm::inverse(gameObject->parent->transform->rotation)*rotation;
+        localEulerAngles = glm::eulerAngles(localRotation);
+    }
+
+    recalculate();
 }
 
 void Transform::setScale(const glm::vec3 &val) {
     scale = val;
-
+    recalculate();
 }
 
 void Transform::setLocalPosition(const glm::vec3 &val) {
-    localPosition=val;
+    localPosition =val;
+    recalculate();
 }
 
 void Transform::setLocalEulerAngles(const glm::vec3 &val) {
-    localEulerAngles=val;
-    localRotation = glm::qua<float>(glm::radians(localEulerAngles));
+    localEulerAngles =  val;
+    localRotation = glm::qua<float>(glm::radians(val));
+    recalculate();
+    eulerAngles = glm::degrees(glm::eulerAngles(rotation));
+}
+
+void Transform::recalculate() {
+
+    if (gameObject->parent){
+        position = gameObject->parent->transform->localToWorld * glm::vec4(localPosition,1);
+        rotation = gameObject->parent->transform->rotation*localRotation;
+    } else{
+        position = localPosition;
+        rotation = localRotation;
+    }
+
+    left = rotation*glm::vec3{1,0,0};
+    forward = rotation*glm::vec3{0,0,1};
+    up = rotation*glm::vec3{0 ,1 ,0};
+
+    //先缩放，后旋转，最后位移
+    localToWorld = glm::mat4(1);
+    localToWorld = glm::translate(localToWorld, position);
+    localToWorld = localToWorld* glm::mat4_cast(rotation);
+    localToWorld = glm::scale(localToWorld, scale);
+
+    worldToLocal = glm::inverse(localToWorld);
+
+    for(GameObject * child:gameObject->children){//重新计算子节点
+        child->transform->recalculate();
+    }
+
 }
 
 

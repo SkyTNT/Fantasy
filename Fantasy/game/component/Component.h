@@ -17,9 +17,9 @@ public:
     virtual void tick() = 0;
 
 public:
-    bool initialized;
+    bool initialized = false;
 protected:
-    GameObject *gameObject;
+    GameObject *gameObject = nullptr;
 
     friend GameObject;
 };

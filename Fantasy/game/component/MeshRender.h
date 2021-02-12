@@ -14,5 +14,5 @@ public:
     void tick() override;
 
 public:
-    Material *material;
+    Material *material = nullptr;
 };

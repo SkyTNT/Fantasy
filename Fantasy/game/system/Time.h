@@ -5,6 +5,8 @@ class Time {
 public:
     //程序运行时间(ms)
     static long time;
+    //帧计数
+    static long tickCount;
     //每帧时间增量
     static float deltaTime;
     //时间速度缩放

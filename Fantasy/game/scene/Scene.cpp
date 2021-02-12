@@ -13,7 +13,7 @@ void Scene::init() {
 
 }
 
-void gameObjectsDFS(GameObject *gameObject) {
+static void gameObjectsDFS(GameObject *gameObject) {
     for (auto component:gameObject->components) {
         if (!component->initialized) {
             component->init();

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include <vector>
 #include <typeinfo>
 
@@ -21,6 +22,7 @@ public:
     void addChild(GameObject *child);
 
 public:
+    std::string name;
     GameObject *parent;
     std::vector<GameObject *> children;
     std::vector<Component *> components;

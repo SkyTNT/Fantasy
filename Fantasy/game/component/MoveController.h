@@ -8,14 +8,13 @@ class Transform;
 class MoveController : public Component {
 public:
     MoveController();
-    ~MoveController() override;
 
     void init() override;
     void tick() override;
 
 private:
-    Transform *transform;
-    glm::vec3 move;
-    float pitch,yaw;
+    Transform *transform = nullptr;
+    glm::vec3 move = {0,0,0};
+    float pitch = 0,yaw = 0;
 
 };

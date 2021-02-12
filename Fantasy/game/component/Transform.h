@@ -9,8 +9,6 @@ class Transform : public Component {
 public:
     Transform();
 
-    ~Transform() override;
-
     void init() override;
 
     void tick() override;
@@ -60,11 +58,10 @@ public:
     //设置相对欧拉角
     void setLocalEulerAngles(const glm::vec3 &val);
 
-    void translate(const glm::vec3 &translation, Transform *relativeTo = nullptr);
+    void recalculate();
 
 
 private:
-
     glm::vec3 position, eulerAngles, scale,localPosition,localEulerAngles,left,up,forward;
     glm::qua<float> rotation,localRotation;
     glm::mat4 localToWorld,worldToLocal;

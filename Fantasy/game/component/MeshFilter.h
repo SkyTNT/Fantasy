@@ -15,5 +15,5 @@ public:
     void tick() override;
 
 public:
-    Mesh *mesh;
+    Mesh *mesh = nullptr;
 };

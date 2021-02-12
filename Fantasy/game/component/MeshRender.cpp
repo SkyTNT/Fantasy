@@ -4,11 +4,9 @@
 #include "../object/GameObject.h"
 #include "../asset/Material.h"
 #include "../asset/Mesh.h"
-#include <glm/gtc/matrix_transform.hpp>
-#include <utils/Utils.h>
 
 MeshRender::MeshRender() : Component() {
-    material = nullptr;
+
 }
 
 void MeshRender::init() {

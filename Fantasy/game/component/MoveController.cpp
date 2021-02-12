@@ -8,9 +8,6 @@
 MoveController::MoveController() : Component() {
 }
 
-MoveController::~MoveController() {
-
-}
 
 void MoveController::init() {
     Input::setCursor(Window::width/2,Window::height/2);

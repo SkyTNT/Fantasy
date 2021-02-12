@@ -1,10 +1,6 @@
 #include "Component.h"
+#include <utils/Utils.h>
 
-Component::Component() : gameObject(nullptr) , initialized(false) {
+Component::Component() = default;
 
-}
-
-
-Component::~Component() {
-
-}
+Component::~Component()= default;

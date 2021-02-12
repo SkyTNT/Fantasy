@@ -30,6 +30,9 @@ void TestScene::init() {
     cube = new Cube();
     cube2 = new Cube();
     cameraObject = new CameraObject();
+    cube->name="cube";
+    cube2->name="cube2";
+    cameraObject->name="cam";
     cube->transform->setLocalPosition({0.5, 0.5, 0});
     cube2->transform->setLocalPosition({-1, 0, 0});
     cube->transform->setLocalEulerAngles({0,0,45});
@@ -39,7 +42,7 @@ void TestScene::init() {
     cameraObject->addComponent(new MoveController());
     root->addChild(cameraObject);
     root->addChild(cube);
-    root->addChild(cube2);
+    cube->addChild(cube2);
 }
 
 void TestScene::tick() {
