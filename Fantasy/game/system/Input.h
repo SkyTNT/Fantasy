@@ -4,28 +4,44 @@
 
 class Input {
 public:
+    class Cursor;
 
     static void init();
     static void tick();
     static bool getKey(int code);
     static void pressKey(int code);
     static void releaseKey(int code);
-    static glm::vec2 getCursor();
-    static void setCursor(float x, float  y);
-    static void cursorCallback(float x, float  y);
+    static void setCursor(Cursor* cursor);
+    static void setCursorPos(float x, float  y);
+    static const glm::vec2 &getCursorPos();
+    static const glm::vec2 &getCursorVelocity();
     static void lockCursor();
     static void unlockCursor();
     static glm::vec2 getAxis();
 
-public:
-    static glm::vec2 cursor,cursorVelocity;
-    static std::function<void(float,float)> setCursorReal;
 private:
-    static glm::vec2 cursorLockPos;
+    static Cursor* cursor;
+    static glm::vec2 cursorLockPos,cursorVelocity;
     static bool cursorLocked;
     static bool keyState[1000];
     static glm::vec2 axis;
+
+public:
+    //鼠标接口
+    class Cursor{
+    public:
+        Cursor();
+        virtual ~Cursor();
+
+        virtual void setPos(float x, float  y) = 0;
+        virtual const glm::vec2 &getPos() = 0;
+
+    protected:
+        glm::vec2 pos = {0, 0};
+    };
 };
+
+
 
 
 //参考于glfw3.h

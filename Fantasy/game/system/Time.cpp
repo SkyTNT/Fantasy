@@ -2,8 +2,9 @@
 #include <ctime>
 #include <climits>
 
-long Time::time = 0;
+
 long Time::tickCount = 0;
+float Time::time = 0;
 float Time::deltaTime = 0;
 float Time::timeScale = 1;
 long lastTime = 0;
@@ -17,7 +18,7 @@ void Time::tick() {
     if (dTimeMs < 0) {
         dTimeMs += LONG_MAX;//·ÀÖ¹Ê±¼äÖØÖÃ
     }
-    time = now * 1000 / CLOCKS_PER_SEC;
+    time = (float)(now) / CLOCKS_PER_SEC;
     deltaTime = ((float) dTimeMs) / CLOCKS_PER_SEC;
     deltaTime *= timeScale;
 

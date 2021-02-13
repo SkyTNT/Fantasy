@@ -58,11 +58,12 @@ public:
     //设置相对欧拉角
     void setLocalEulerAngles(const glm::vec3 &val);
 
+    //重计算
     void recalculate();
 
 
 private:
-    glm::vec3 position, eulerAngles, scale,localPosition,localEulerAngles,left,up,forward;
+    glm::vec3 position, eulerAngles,localPosition,localEulerAngles,scale,left,up,forward;
     glm::qua<float> rotation,localRotation;
     glm::mat4 localToWorld,worldToLocal;
 };

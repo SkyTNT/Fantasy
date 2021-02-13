@@ -14,6 +14,25 @@ static GLFWwindow* window;
 static GameClient *mClient;
 static TestScene* testScene;
 
+//实现鼠标接口
+class DesktopCursor: public Input::Cursor{
+public:
+    void setPos(float x, float y) override{
+        pos.x=x;
+        pos.y=y;
+        glfwSetCursorPos(window,x,y);
+    }
+    const glm::vec2 & getPos() override{
+        double x,y;
+        glfwGetCursorPos(window,&x,&y);
+        pos.x=x;
+        pos.y=y;
+        return pos;
+    }
+};
+
+static DesktopCursor* cursor;
+
 static void framebuffer_size_callback(GLFWwindow* window,int width,int height) {
     Env::windowResize(width,height);
 }
@@ -34,7 +53,7 @@ static void mouseButtonCallback(GLFWwindow* window, int button, int action, int 
 }
 
 static void cursorCallback(GLFWwindow* window, double x, double y){
-    Input::cursorCallback(x,y);
+
 }
 
 static void closeCallback(GLFWwindow* window)
@@ -49,9 +68,9 @@ int main(int argNum,char**args)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-    window = glfwCreateWindow(1600, 800, "Fantasy", NULL, NULL);
+    window = glfwCreateWindow(1600, 800, "Fantasy", nullptr, nullptr);
     //glfwSetWindowIcon(window, 1, );
-    if (window == NULL)
+    if (window == nullptr)
     {
         LOG_E("Main","Failed to create GLFW window");
         glfwTerminate();
@@ -62,17 +81,16 @@ int main(int argNum,char**args)
     glfwSetFramebufferSizeCallback(window,framebuffer_size_callback);
     glfwSetKeyCallback(window, keyCallback);
     glfwSetMouseButtonCallback(window,mouseButtonCallback);
-    glfwSetCursorPosCallback(window,cursorCallback);
+    //glfwSetCursorPosCallback(window,cursorCallback);
     glfwSetWindowCloseCallback(window, closeCallback);
     Env::setup(window);
     Env::windowResize(1600,800);
 
+    cursor = new DesktopCursor;
     mClient = GameClient::getGameClient();
     testScene=new TestScene();
 
-	Input::setCursorReal=[](float x,float y){
-	    glfwSetCursorPos(window,x,y);
-	};
+    Input::setCursor(cursor);
 	mClient->loadScene(testScene);
 
     while (!mClient->needExiting())
@@ -82,6 +100,7 @@ int main(int argNum,char**args)
 
     }
 
+    delete cursor;
 	delete mClient;
     delete testScene;
 	return 0;

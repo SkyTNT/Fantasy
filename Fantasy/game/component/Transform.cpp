@@ -1,13 +1,11 @@
 #include "Transform.h"
 #include "../object/GameObject.h"
-#include "../system/Time.h"
-#include <glm/gtc/matrix_transform.hpp>
 #include <utils/Utils.h>
 
 Transform::Transform() : Component() {
-    localToWorld = worldToLocal = glm::mat4(1);
+    localToWorld = worldToLocal = glm::mat4(1);//单位矩阵
     position = eulerAngles =localPosition = localEulerAngles  = {0, 0, 0};
-    rotation = localRotation = glm::qua<float>(eulerAngles);
+    rotation = localRotation = glm::qua<float>(glm::radians(eulerAngles));
     left = {1,0,0};
     forward = {0,0,1};
     up = {0 ,1 ,1};
@@ -64,20 +62,19 @@ const glm::mat4 &Transform::getWorldToLocal() {
 }
 
 void Transform::setPosition(const glm::vec3 &val) {
-    position = localPosition = val;
+    localPosition = val;
     if (gameObject->parent)
-        localPosition = gameObject->parent->transform->worldToLocal * glm::vec4(position,1);
+        localPosition = gameObject->parent->transform->worldToLocal * glm::vec4(localPosition,1);
     recalculate();
 }
 
 void Transform::setEulerAngles(const glm::vec3 &val) {
-    eulerAngles = localEulerAngles = val;
-    rotation = localRotation = glm::qua<float>(glm::radians(eulerAngles));
+    eulerAngles = val;
+    localRotation = glm::qua<float>(glm::radians(eulerAngles));
     if (gameObject->parent){
-        localRotation = glm::inverse(gameObject->parent->transform->rotation)*rotation;
-        localEulerAngles = glm::eulerAngles(localRotation);
+        localRotation = glm::inverse(gameObject->parent->transform->rotation)*localRotation;
     }
-
+    localEulerAngles = glm::degrees(glm::eulerAngles(localRotation));
     recalculate();
 }
 
@@ -101,13 +98,16 @@ void Transform::setLocalEulerAngles(const glm::vec3 &val) {
 void Transform::recalculate() {
 
     if (gameObject->parent){
+        //通过父物体的变换矩阵把局部坐标转换为世界坐标
         position = gameObject->parent->transform->localToWorld * glm::vec4(localPosition,1);
+        //父世界旋转和局部旋转相乘
         rotation = gameObject->parent->transform->rotation*localRotation;
     } else{
         position = localPosition;
         rotation = localRotation;
     }
 
+    //旋转坐标轴
     left = rotation*glm::vec3{1,0,0};
     forward = rotation*glm::vec3{0,0,1};
     up = rotation*glm::vec3{0 ,1 ,0};
@@ -120,7 +120,8 @@ void Transform::recalculate() {
 
     worldToLocal = glm::inverse(localToWorld);
 
-    for(GameObject * child:gameObject->children){//重新计算子节点
+    //重新计算子节点
+    for(GameObject * child:gameObject->children){
         child->transform->recalculate();
     }
 
