@@ -1,7 +1,7 @@
 #pragma once
 
-#include "game/object/GameObject.h"
-#include "game/asset/Asset.h"
+#include <object/GameObject.h>
+#include <asset/Asset.h>
 
 //³¡¾°
 class Scene : public Asset {

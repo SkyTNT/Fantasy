@@ -6,9 +6,9 @@
 #include <glfm.h>
 #include <cstring>
 #include <env/Environment.h>
-#include <game/GameClient.h>
-#include <game/scene/TestScene.h>
-#include <game/system/Input.h>
+#include <GameClient.h>
+#include <scene/TestScene.h>
+#include <system/Input.h>
 #include <utils/Utils.h>
 
 static GameClient*client;

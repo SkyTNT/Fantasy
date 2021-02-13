@@ -1,12 +1,12 @@
 #include "GameClient.h"
 #include <utils/Utils.h>
 #include <env/Environment.h>
-#include <game/system/Time.h>
-#include <game/system/Window.h>
-#include <game/system/Display.h>
-#include <game/system/Input.h>
-#include <game/asset/AssetsManager.h>
-#include <game/scene/Scene.h>
+#include <system/Time.h>
+#include <system/Window.h>
+#include <system/Display.h>
+#include <system/Input.h>
+#include <asset/AssetsManager.h>
+#include <scene/Scene.h>
 
 static GameClient *mClient= nullptr;
 

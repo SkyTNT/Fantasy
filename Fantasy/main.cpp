@@ -1,10 +1,10 @@
 #include <iostream>
 #include <GLFW/glfw3.h>
-#include <game/GameClient.h>
+#include <GameClient.h>
 #include <utils/Utils.h>
 #include <env/Environment.h>
-#include <game/scene/TestScene.h>
-#include <game/system/Input.h>
+#include <scene/TestScene.h>
+#include <system/Input.h>
 
 
 //½ûÓÃ¿ØÖÆÌ¨
@@ -103,6 +103,7 @@ int main(int argNum,char**args)
     delete cursor;
 	delete mClient;
     delete testScene;
+
 	return 0;
 }
 
