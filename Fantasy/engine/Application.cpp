@@ -1,18 +1,14 @@
+#include "Application.h"
 #include <iostream>
 #include <GLFW/glfw3.h>
 #include <GameClient.h>
 #include <utils/Utils.h>
+#include <utils/FileManager.h>
 #include <env/Environment.h>
 #include <scene/TestScene.h>
 #include <system/Input.h>
-
-
-//禁用控制台
-//#pragma comment( linker, "/subsystem:windows /entry:mainCRTStartup" )
-
 static GLFWwindow* window;
 static GameClient *mClient;
-static TestScene* testScene;
 
 //实现鼠标接口
 class DesktopCursor: public Input::Cursor{
@@ -62,8 +58,28 @@ static void closeCallback(GLFWwindow* window)
 }
 
 
-int main(int argNum,char**args)
-{
+Application::Application() {
+
+}
+
+Application::~Application() {
+
+}
+
+void Application::onCreate() {
+
+}
+
+void Application::onExit() {
+
+}
+
+void Application::tick() {
+
+}
+
+void Application::setup() {
+
     glfwInit();
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -74,7 +90,7 @@ int main(int argNum,char**args)
     {
         LOG_E("Main","Failed to create GLFW window");
         glfwTerminate();
-        return -1;
+        return;
     }
 
     glfwMakeContextCurrent(window);
@@ -85,25 +101,22 @@ int main(int argNum,char**args)
     glfwSetWindowCloseCallback(window, closeCallback);
     Env::setup(window);
     Env::windowResize(1600,800);
+    FileManager::basePath="../../fantasy/assets/";
 
     cursor = new DesktopCursor;
-    mClient = GameClient::getGameClient();
-    testScene=new TestScene();
-
     Input::setCursor(cursor);
-	mClient->loadScene(testScene);
+    client = mClient = GameClient::getGameClient();
+}
 
+void Application::loop() {
     while (!mClient->needExiting())
     {
-
         mClient->tick();
-
     }
+}
 
+void Application::cleanup() {
     delete cursor;
-	delete mClient;
-    delete testScene;
-
-	return 0;
+    delete mClient;
 }
 

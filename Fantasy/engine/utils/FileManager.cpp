@@ -42,14 +42,13 @@ static FILE *_fc_android_fopen(const char *filename, const char *mode) {
     }
 }
 #define fopen _fc_android_fopen
-#define BasePath ""
-#else
-#define BasePath "../assets/"
 #endif
+
+std::string  FileManager::basePath="";
 
 std::string FileManager::loadText(const std::string &path) {
     FILE *file;
-    file = fopen((BasePath + path).c_str(), "rb");
+    file = fopen((basePath + path).c_str(), "rb");
     if (file) {
         fseek(file, 0, SEEK_END);
         long length = ftell(file);
@@ -67,7 +66,7 @@ std::string FileManager::loadText(const std::string &path) {
 }
 
 unsigned char *FileManager::loadImage(const std::string &path, int *width, int *height, int *channel) {
-    FILE *file = fopen((BasePath + path).c_str(), "rb");
+    FILE *file = fopen((basePath + path).c_str(), "rb");
     if (file)
         return stbi_load_from_file(file, width, height, channel, 0);
     LOG_E("File", "load " + path + " field");

@@ -1,1 +1,1 @@
-add_library(stb stb_vorbis.c)
+add_library(stb STATIC stb_vorbis.c)
