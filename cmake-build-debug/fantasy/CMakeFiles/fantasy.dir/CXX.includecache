@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../engine/Application.h
+
+../engine/asset/Asset.h
+string
+-
+
+../engine/object/GameObject.h
+string
+-
+vector
+-
+typeinfo
+-
+
+../engine/scene/Scene.h
+object/GameObject.h
+-
+asset/Asset.h
+-
+
+../engine/scene/TestScene.h
+Scene.h
+../engine/scene/Scene.h
+
+D:/myprojects/c/Fantasy/fantasy/main.cpp
+iostream
+-
+scene/TestScene.h
+-
+Application.h
+-
+
