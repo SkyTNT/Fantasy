@@ -20,5 +20,6 @@ public:
     }
 };
 
-StartApplication(Fantasy)
+StartApplication(Fantasy,1600,800);
+
 

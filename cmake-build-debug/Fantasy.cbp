@@ -423,6 +423,12 @@
 		<Unit filename="D:/myprojects/c/Fantasy/engine/asset/Mesh.h">
 			<Option target="engine"/>
 		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/engine/asset/Scene.cpp">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/engine/asset/Scene.h">
+			<Option target="engine"/>
+		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/engine/asset/Shader.cpp">
 			<Option target="engine"/>
 		</Unit>
@@ -459,12 +465,6 @@
 		<Unit filename="D:/myprojects/c/Fantasy/engine/component/MeshRender.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/component/MoveController.cpp">
-			<Option target="engine"/>
-		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/component/MoveController.h">
-			<Option target="engine"/>
-		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/engine/component/Transform.cpp">
 			<Option target="engine"/>
 		</Unit>
@@ -492,22 +492,16 @@
 		<Unit filename="D:/myprojects/c/Fantasy/engine/object/GameObject.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/scene/Scene.cpp">
-			<Option target="engine"/>
-		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/scene/Scene.h">
-			<Option target="engine"/>
-		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/scene/TestScene.cpp">
-			<Option target="engine"/>
-		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/scene/TestScene.h">
-			<Option target="engine"/>
-		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/engine/system/Display.cpp">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/engine/system/Display.h">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/engine/system/FileManager.cpp">
+			<Option target="engine"/>
+		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/engine/system/FileManager.h">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/engine/system/Input.cpp">
@@ -540,19 +534,25 @@
 		<Unit filename="D:/myprojects/c/Fantasy/engine/thread/ThreadPool.h">
 			<Option target="engine"/>
 		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/utils/FileManager.cpp">
-			<Option target="engine"/>
-		</Unit>
-		<Unit filename="D:/myprojects/c/Fantasy/engine/utils/FileManager.h">
-			<Option target="engine"/>
-		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/engine/utils/Utils.cpp">
 			<Option target="engine"/>
 		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/engine/utils/Utils.h">
 			<Option target="engine"/>
 		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/fantasy/component/MoveController.cpp">
+			<Option target="fantasy"/>
+		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/fantasy/component/MoveController.h">
+			<Option target="fantasy"/>
+		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/fantasy/main.cpp">
+			<Option target="fantasy"/>
+		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/fantasy/scene/TestScene.cpp">
+			<Option target="fantasy"/>
+		</Unit>
+		<Unit filename="D:/myprojects/c/Fantasy/fantasy/scene/TestScene.h">
 			<Option target="fantasy"/>
 		</Unit>
 		<Unit filename="D:/myprojects/c/Fantasy/CMakeLists.txt">

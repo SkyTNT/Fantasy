@@ -76,10 +76,24 @@ include engine/CMakeFiles/engine.dir/progress.make
 # Include the compile flags for this target's objects.
 include engine/CMakeFiles/engine.dir/flags.make
 
+engine/CMakeFiles/engine.dir/Application.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
+engine/CMakeFiles/engine.dir/Application.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
+engine/CMakeFiles/engine.dir/Application.cpp.obj: ../engine/Application.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object engine/CMakeFiles/engine.dir/Application.cpp.obj"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\Application.cpp.obj -c D:\myprojects\c\Fantasy\engine\Application.cpp
+
+engine/CMakeFiles/engine.dir/Application.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Application.cpp.i"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\Application.cpp > CMakeFiles\engine.dir\Application.cpp.i
+
+engine/CMakeFiles/engine.dir/Application.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Application.cpp.s"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\Application.cpp -o CMakeFiles\engine.dir\Application.cpp.s
+
 engine/CMakeFiles/engine.dir/asset/Asset.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/asset/Asset.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/asset/Asset.cpp.obj: ../engine/asset/Asset.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object engine/CMakeFiles/engine.dir/asset/Asset.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object engine/CMakeFiles/engine.dir/asset/Asset.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\asset\Asset.cpp.obj -c D:\myprojects\c\Fantasy\engine\asset\Asset.cpp
 
 engine/CMakeFiles/engine.dir/asset/Asset.cpp.i: cmake_force
@@ -93,7 +107,7 @@ engine/CMakeFiles/engine.dir/asset/Asset.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.obj: ../engine/asset/AssetsManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\asset\AssetsManager.cpp.obj -c D:\myprojects\c\Fantasy\engine\asset\AssetsManager.cpp
 
 engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.i: cmake_force
@@ -107,7 +121,7 @@ engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/asset/Material.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/asset/Material.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/asset/Material.cpp.obj: ../engine/asset/Material.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object engine/CMakeFiles/engine.dir/asset/Material.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object engine/CMakeFiles/engine.dir/asset/Material.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\asset\Material.cpp.obj -c D:\myprojects\c\Fantasy\engine\asset\Material.cpp
 
 engine/CMakeFiles/engine.dir/asset/Material.cpp.i: cmake_force
@@ -121,7 +135,7 @@ engine/CMakeFiles/engine.dir/asset/Material.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/asset/Mesh.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/asset/Mesh.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/asset/Mesh.cpp.obj: ../engine/asset/Mesh.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object engine/CMakeFiles/engine.dir/asset/Mesh.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object engine/CMakeFiles/engine.dir/asset/Mesh.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\asset\Mesh.cpp.obj -c D:\myprojects\c\Fantasy\engine\asset\Mesh.cpp
 
 engine/CMakeFiles/engine.dir/asset/Mesh.cpp.i: cmake_force
@@ -132,10 +146,24 @@ engine/CMakeFiles/engine.dir/asset/Mesh.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/asset/Mesh.cpp.s"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\asset\Mesh.cpp -o CMakeFiles\engine.dir\asset\Mesh.cpp.s
 
+engine/CMakeFiles/engine.dir/asset/Scene.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
+engine/CMakeFiles/engine.dir/asset/Scene.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
+engine/CMakeFiles/engine.dir/asset/Scene.cpp.obj: ../engine/asset/Scene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object engine/CMakeFiles/engine.dir/asset/Scene.cpp.obj"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\asset\Scene.cpp.obj -c D:\myprojects\c\Fantasy\engine\asset\Scene.cpp
+
+engine/CMakeFiles/engine.dir/asset/Scene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/asset/Scene.cpp.i"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\asset\Scene.cpp > CMakeFiles\engine.dir\asset\Scene.cpp.i
+
+engine/CMakeFiles/engine.dir/asset/Scene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/asset/Scene.cpp.s"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\asset\Scene.cpp -o CMakeFiles\engine.dir\asset\Scene.cpp.s
+
 engine/CMakeFiles/engine.dir/asset/Shader.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/asset/Shader.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/asset/Shader.cpp.obj: ../engine/asset/Shader.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object engine/CMakeFiles/engine.dir/asset/Shader.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object engine/CMakeFiles/engine.dir/asset/Shader.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\asset\Shader.cpp.obj -c D:\myprojects\c\Fantasy\engine\asset\Shader.cpp
 
 engine/CMakeFiles/engine.dir/asset/Shader.cpp.i: cmake_force
@@ -149,7 +177,7 @@ engine/CMakeFiles/engine.dir/asset/Shader.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.obj: ../engine/asset/Texture2D.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\asset\Texture2D.cpp.obj -c D:\myprojects\c\Fantasy\engine\asset\Texture2D.cpp
 
 engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.i: cmake_force
@@ -163,7 +191,7 @@ engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/component/Camera.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/component/Camera.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/component/Camera.cpp.obj: ../engine/component/Camera.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object engine/CMakeFiles/engine.dir/component/Camera.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object engine/CMakeFiles/engine.dir/component/Camera.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\component\Camera.cpp.obj -c D:\myprojects\c\Fantasy\engine\component\Camera.cpp
 
 engine/CMakeFiles/engine.dir/component/Camera.cpp.i: cmake_force
@@ -177,7 +205,7 @@ engine/CMakeFiles/engine.dir/component/Camera.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/component/Component.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/component/Component.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/component/Component.cpp.obj: ../engine/component/Component.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object engine/CMakeFiles/engine.dir/component/Component.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object engine/CMakeFiles/engine.dir/component/Component.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\component\Component.cpp.obj -c D:\myprojects\c\Fantasy\engine\component\Component.cpp
 
 engine/CMakeFiles/engine.dir/component/Component.cpp.i: cmake_force
@@ -191,7 +219,7 @@ engine/CMakeFiles/engine.dir/component/Component.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.obj: ../engine/component/MeshFilter.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\component\MeshFilter.cpp.obj -c D:\myprojects\c\Fantasy\engine\component\MeshFilter.cpp
 
 engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.i: cmake_force
@@ -205,7 +233,7 @@ engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/component/MeshRender.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/component/MeshRender.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/component/MeshRender.cpp.obj: ../engine/component/MeshRender.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object engine/CMakeFiles/engine.dir/component/MeshRender.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object engine/CMakeFiles/engine.dir/component/MeshRender.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\component\MeshRender.cpp.obj -c D:\myprojects\c\Fantasy\engine\component\MeshRender.cpp
 
 engine/CMakeFiles/engine.dir/component/MeshRender.cpp.i: cmake_force
@@ -216,24 +244,10 @@ engine/CMakeFiles/engine.dir/component/MeshRender.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/component/MeshRender.cpp.s"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\component\MeshRender.cpp -o CMakeFiles\engine.dir\component\MeshRender.cpp.s
 
-engine/CMakeFiles/engine.dir/component/MoveController.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
-engine/CMakeFiles/engine.dir/component/MoveController.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
-engine/CMakeFiles/engine.dir/component/MoveController.cpp.obj: ../engine/component/MoveController.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object engine/CMakeFiles/engine.dir/component/MoveController.cpp.obj"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\component\MoveController.cpp.obj -c D:\myprojects\c\Fantasy\engine\component\MoveController.cpp
-
-engine/CMakeFiles/engine.dir/component/MoveController.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/component/MoveController.cpp.i"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\component\MoveController.cpp > CMakeFiles\engine.dir\component\MoveController.cpp.i
-
-engine/CMakeFiles/engine.dir/component/MoveController.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/component/MoveController.cpp.s"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\component\MoveController.cpp -o CMakeFiles\engine.dir\component\MoveController.cpp.s
-
 engine/CMakeFiles/engine.dir/component/Transform.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/component/Transform.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/component/Transform.cpp.obj: ../engine/component/Transform.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object engine/CMakeFiles/engine.dir/component/Transform.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object engine/CMakeFiles/engine.dir/component/Transform.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\component\Transform.cpp.obj -c D:\myprojects\c\Fantasy\engine\component\Transform.cpp
 
 engine/CMakeFiles/engine.dir/component/Transform.cpp.i: cmake_force
@@ -247,7 +261,7 @@ engine/CMakeFiles/engine.dir/component/Transform.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/env/GLEnv.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/env/GLEnv.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/env/GLEnv.cpp.obj: ../engine/env/GLEnv.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object engine/CMakeFiles/engine.dir/env/GLEnv.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object engine/CMakeFiles/engine.dir/env/GLEnv.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\env\GLEnv.cpp.obj -c D:\myprojects\c\Fantasy\engine\env\GLEnv.cpp
 
 engine/CMakeFiles/engine.dir/env/GLEnv.cpp.i: cmake_force
@@ -261,7 +275,7 @@ engine/CMakeFiles/engine.dir/env/GLEnv.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/object/CameraObject.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/object/CameraObject.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/object/CameraObject.cpp.obj: ../engine/object/CameraObject.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object engine/CMakeFiles/engine.dir/object/CameraObject.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object engine/CMakeFiles/engine.dir/object/CameraObject.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\object\CameraObject.cpp.obj -c D:\myprojects\c\Fantasy\engine\object\CameraObject.cpp
 
 engine/CMakeFiles/engine.dir/object/CameraObject.cpp.i: cmake_force
@@ -275,7 +289,7 @@ engine/CMakeFiles/engine.dir/object/CameraObject.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/object/Cube.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/object/Cube.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/object/Cube.cpp.obj: ../engine/object/Cube.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object engine/CMakeFiles/engine.dir/object/Cube.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object engine/CMakeFiles/engine.dir/object/Cube.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\object\Cube.cpp.obj -c D:\myprojects\c\Fantasy\engine\object\Cube.cpp
 
 engine/CMakeFiles/engine.dir/object/Cube.cpp.i: cmake_force
@@ -289,7 +303,7 @@ engine/CMakeFiles/engine.dir/object/Cube.cpp.s: cmake_force
 engine/CMakeFiles/engine.dir/object/GameObject.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/object/GameObject.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/object/GameObject.cpp.obj: ../engine/object/GameObject.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object engine/CMakeFiles/engine.dir/object/GameObject.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object engine/CMakeFiles/engine.dir/object/GameObject.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\object\GameObject.cpp.obj -c D:\myprojects\c\Fantasy\engine\object\GameObject.cpp
 
 engine/CMakeFiles/engine.dir/object/GameObject.cpp.i: cmake_force
@@ -300,38 +314,10 @@ engine/CMakeFiles/engine.dir/object/GameObject.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/object/GameObject.cpp.s"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\object\GameObject.cpp -o CMakeFiles\engine.dir\object\GameObject.cpp.s
 
-engine/CMakeFiles/engine.dir/scene/Scene.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
-engine/CMakeFiles/engine.dir/scene/Scene.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
-engine/CMakeFiles/engine.dir/scene/Scene.cpp.obj: ../engine/scene/Scene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object engine/CMakeFiles/engine.dir/scene/Scene.cpp.obj"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\scene\Scene.cpp.obj -c D:\myprojects\c\Fantasy\engine\scene\Scene.cpp
-
-engine/CMakeFiles/engine.dir/scene/Scene.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/scene/Scene.cpp.i"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\scene\Scene.cpp > CMakeFiles\engine.dir\scene\Scene.cpp.i
-
-engine/CMakeFiles/engine.dir/scene/Scene.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/scene/Scene.cpp.s"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\scene\Scene.cpp -o CMakeFiles\engine.dir\scene\Scene.cpp.s
-
-engine/CMakeFiles/engine.dir/scene/TestScene.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
-engine/CMakeFiles/engine.dir/scene/TestScene.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
-engine/CMakeFiles/engine.dir/scene/TestScene.cpp.obj: ../engine/scene/TestScene.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object engine/CMakeFiles/engine.dir/scene/TestScene.cpp.obj"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\scene\TestScene.cpp.obj -c D:\myprojects\c\Fantasy\engine\scene\TestScene.cpp
-
-engine/CMakeFiles/engine.dir/scene/TestScene.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/scene/TestScene.cpp.i"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\scene\TestScene.cpp > CMakeFiles\engine.dir\scene\TestScene.cpp.i
-
-engine/CMakeFiles/engine.dir/scene/TestScene.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/scene/TestScene.cpp.s"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\scene\TestScene.cpp -o CMakeFiles\engine.dir\scene\TestScene.cpp.s
-
 engine/CMakeFiles/engine.dir/system/Display.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/system/Display.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/system/Display.cpp.obj: ../engine/system/Display.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object engine/CMakeFiles/engine.dir/system/Display.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object engine/CMakeFiles/engine.dir/system/Display.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\system\Display.cpp.obj -c D:\myprojects\c\Fantasy\engine\system\Display.cpp
 
 engine/CMakeFiles/engine.dir/system/Display.cpp.i: cmake_force
@@ -341,6 +327,20 @@ engine/CMakeFiles/engine.dir/system/Display.cpp.i: cmake_force
 engine/CMakeFiles/engine.dir/system/Display.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/system/Display.cpp.s"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\system\Display.cpp -o CMakeFiles\engine.dir\system\Display.cpp.s
+
+engine/CMakeFiles/engine.dir/system/FileManager.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
+engine/CMakeFiles/engine.dir/system/FileManager.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
+engine/CMakeFiles/engine.dir/system/FileManager.cpp.obj: ../engine/system/FileManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object engine/CMakeFiles/engine.dir/system/FileManager.cpp.obj"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\system\FileManager.cpp.obj -c D:\myprojects\c\Fantasy\engine\system\FileManager.cpp
+
+engine/CMakeFiles/engine.dir/system/FileManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/system/FileManager.cpp.i"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\system\FileManager.cpp > CMakeFiles\engine.dir\system\FileManager.cpp.i
+
+engine/CMakeFiles/engine.dir/system/FileManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/system/FileManager.cpp.s"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\system\FileManager.cpp -o CMakeFiles\engine.dir\system\FileManager.cpp.s
 
 engine/CMakeFiles/engine.dir/system/Input.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/system/Input.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
@@ -412,24 +412,10 @@ engine/CMakeFiles/engine.dir/thread/ThreadPool.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/thread/ThreadPool.cpp.s"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\thread\ThreadPool.cpp -o CMakeFiles\engine.dir\thread\ThreadPool.cpp.s
 
-engine/CMakeFiles/engine.dir/utils/FileManager.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
-engine/CMakeFiles/engine.dir/utils/FileManager.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
-engine/CMakeFiles/engine.dir/utils/FileManager.cpp.obj: ../engine/utils/FileManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object engine/CMakeFiles/engine.dir/utils/FileManager.cpp.obj"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\utils\FileManager.cpp.obj -c D:\myprojects\c\Fantasy\engine\utils\FileManager.cpp
-
-engine/CMakeFiles/engine.dir/utils/FileManager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/utils/FileManager.cpp.i"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\utils\FileManager.cpp > CMakeFiles\engine.dir\utils\FileManager.cpp.i
-
-engine/CMakeFiles/engine.dir/utils/FileManager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/utils/FileManager.cpp.s"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\utils\FileManager.cpp -o CMakeFiles\engine.dir\utils\FileManager.cpp.s
-
 engine/CMakeFiles/engine.dir/utils/Utils.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
 engine/CMakeFiles/engine.dir/utils/Utils.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
 engine/CMakeFiles/engine.dir/utils/Utils.cpp.obj: ../engine/utils/Utils.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object engine/CMakeFiles/engine.dir/utils/Utils.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object engine/CMakeFiles/engine.dir/utils/Utils.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\utils\Utils.cpp.obj -c D:\myprojects\c\Fantasy\engine\utils\Utils.cpp
 
 engine/CMakeFiles/engine.dir/utils/Utils.cpp.i: cmake_force
@@ -440,83 +426,65 @@ engine/CMakeFiles/engine.dir/utils/Utils.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/utils/Utils.cpp.s"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\utils\Utils.cpp -o CMakeFiles\engine.dir\utils\Utils.cpp.s
 
-engine/CMakeFiles/engine.dir/Application.cpp.obj: engine/CMakeFiles/engine.dir/flags.make
-engine/CMakeFiles/engine.dir/Application.cpp.obj: engine/CMakeFiles/engine.dir/includes_CXX.rsp
-engine/CMakeFiles/engine.dir/Application.cpp.obj: ../engine/Application.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object engine/CMakeFiles/engine.dir/Application.cpp.obj"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\engine.dir\Application.cpp.obj -c D:\myprojects\c\Fantasy\engine\Application.cpp
-
-engine/CMakeFiles/engine.dir/Application.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/engine.dir/Application.cpp.i"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\engine\Application.cpp > CMakeFiles\engine.dir\Application.cpp.i
-
-engine/CMakeFiles/engine.dir/Application.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/engine.dir/Application.cpp.s"
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\engine\Application.cpp -o CMakeFiles\engine.dir\Application.cpp.s
-
 # Object files for target engine
 engine_OBJECTS = \
+"CMakeFiles/engine.dir/Application.cpp.obj" \
 "CMakeFiles/engine.dir/asset/Asset.cpp.obj" \
 "CMakeFiles/engine.dir/asset/AssetsManager.cpp.obj" \
 "CMakeFiles/engine.dir/asset/Material.cpp.obj" \
 "CMakeFiles/engine.dir/asset/Mesh.cpp.obj" \
+"CMakeFiles/engine.dir/asset/Scene.cpp.obj" \
 "CMakeFiles/engine.dir/asset/Shader.cpp.obj" \
 "CMakeFiles/engine.dir/asset/Texture2D.cpp.obj" \
 "CMakeFiles/engine.dir/component/Camera.cpp.obj" \
 "CMakeFiles/engine.dir/component/Component.cpp.obj" \
 "CMakeFiles/engine.dir/component/MeshFilter.cpp.obj" \
 "CMakeFiles/engine.dir/component/MeshRender.cpp.obj" \
-"CMakeFiles/engine.dir/component/MoveController.cpp.obj" \
 "CMakeFiles/engine.dir/component/Transform.cpp.obj" \
 "CMakeFiles/engine.dir/env/GLEnv.cpp.obj" \
 "CMakeFiles/engine.dir/object/CameraObject.cpp.obj" \
 "CMakeFiles/engine.dir/object/Cube.cpp.obj" \
 "CMakeFiles/engine.dir/object/GameObject.cpp.obj" \
-"CMakeFiles/engine.dir/scene/Scene.cpp.obj" \
-"CMakeFiles/engine.dir/scene/TestScene.cpp.obj" \
 "CMakeFiles/engine.dir/system/Display.cpp.obj" \
+"CMakeFiles/engine.dir/system/FileManager.cpp.obj" \
 "CMakeFiles/engine.dir/system/Input.cpp.obj" \
 "CMakeFiles/engine.dir/system/System.cpp.obj" \
 "CMakeFiles/engine.dir/system/Time.cpp.obj" \
 "CMakeFiles/engine.dir/system/Window.cpp.obj" \
 "CMakeFiles/engine.dir/thread/ThreadPool.cpp.obj" \
-"CMakeFiles/engine.dir/utils/FileManager.cpp.obj" \
-"CMakeFiles/engine.dir/utils/Utils.cpp.obj" \
-"CMakeFiles/engine.dir/Application.cpp.obj"
+"CMakeFiles/engine.dir/utils/Utils.cpp.obj"
 
 # External object files for target engine
 engine_EXTERNAL_OBJECTS =
 
+engine/libengine.a: engine/CMakeFiles/engine.dir/Application.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/asset/Asset.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/asset/AssetsManager.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/asset/Material.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/asset/Mesh.cpp.obj
+engine/libengine.a: engine/CMakeFiles/engine.dir/asset/Scene.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/asset/Shader.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/asset/Texture2D.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/component/Camera.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/component/Component.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/component/MeshFilter.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/component/MeshRender.cpp.obj
-engine/libengine.a: engine/CMakeFiles/engine.dir/component/MoveController.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/component/Transform.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/env/GLEnv.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/object/CameraObject.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/object/Cube.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/object/GameObject.cpp.obj
-engine/libengine.a: engine/CMakeFiles/engine.dir/scene/Scene.cpp.obj
-engine/libengine.a: engine/CMakeFiles/engine.dir/scene/TestScene.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/system/Display.cpp.obj
+engine/libengine.a: engine/CMakeFiles/engine.dir/system/FileManager.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/system/Input.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/system/System.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/system/Time.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/system/Window.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/thread/ThreadPool.cpp.obj
-engine/libengine.a: engine/CMakeFiles/engine.dir/utils/FileManager.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/utils/Utils.cpp.obj
-engine/libengine.a: engine/CMakeFiles/engine.dir/Application.cpp.obj
 engine/libengine.a: engine/CMakeFiles/engine.dir/build.make
 engine/libengine.a: engine/CMakeFiles/engine.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Linking CXX static library libengine.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Linking CXX static library libengine.a"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && $(CMAKE_COMMAND) -P CMakeFiles\engine.dir\cmake_clean_target.cmake
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\engine && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\engine.dir\link.txt --verbose=$(VERBOSE)
 

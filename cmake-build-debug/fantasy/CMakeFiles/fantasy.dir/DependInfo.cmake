@@ -4,7 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
+  "D:/myprojects/c/Fantasy/fantasy/component/MoveController.cpp" "D:/myprojects/c/Fantasy/cmake-build-debug/fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.obj"
   "D:/myprojects/c/Fantasy/fantasy/main.cpp" "D:/myprojects/c/Fantasy/cmake-build-debug/fantasy/CMakeFiles/fantasy.dir/main.cpp.obj"
+  "D:/myprojects/c/Fantasy/fantasy/scene/TestScene.cpp" "D:/myprojects/c/Fantasy/cmake-build-debug/fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

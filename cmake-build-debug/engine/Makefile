@@ -279,6 +279,33 @@ asset/Mesh.cpp.s:
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/asset/Mesh.cpp.s
 .PHONY : asset/Mesh.cpp.s
 
+asset/Scene.obj: asset/Scene.cpp.obj
+
+.PHONY : asset/Scene.obj
+
+# target to build an object file
+asset/Scene.cpp.obj:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/asset/Scene.cpp.obj
+.PHONY : asset/Scene.cpp.obj
+
+asset/Scene.i: asset/Scene.cpp.i
+
+.PHONY : asset/Scene.i
+
+# target to preprocess a source file
+asset/Scene.cpp.i:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/asset/Scene.cpp.i
+.PHONY : asset/Scene.cpp.i
+
+asset/Scene.s: asset/Scene.cpp.s
+
+.PHONY : asset/Scene.s
+
+# target to generate assembly for a file
+asset/Scene.cpp.s:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/asset/Scene.cpp.s
+.PHONY : asset/Scene.cpp.s
+
 asset/Shader.obj: asset/Shader.cpp.obj
 
 .PHONY : asset/Shader.obj
@@ -441,33 +468,6 @@ component/MeshRender.cpp.s:
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/component/MeshRender.cpp.s
 .PHONY : component/MeshRender.cpp.s
 
-component/MoveController.obj: component/MoveController.cpp.obj
-
-.PHONY : component/MoveController.obj
-
-# target to build an object file
-component/MoveController.cpp.obj:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/component/MoveController.cpp.obj
-.PHONY : component/MoveController.cpp.obj
-
-component/MoveController.i: component/MoveController.cpp.i
-
-.PHONY : component/MoveController.i
-
-# target to preprocess a source file
-component/MoveController.cpp.i:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/component/MoveController.cpp.i
-.PHONY : component/MoveController.cpp.i
-
-component/MoveController.s: component/MoveController.cpp.s
-
-.PHONY : component/MoveController.s
-
-# target to generate assembly for a file
-component/MoveController.cpp.s:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/component/MoveController.cpp.s
-.PHONY : component/MoveController.cpp.s
-
 component/Transform.obj: component/Transform.cpp.obj
 
 .PHONY : component/Transform.obj
@@ -603,60 +603,6 @@ object/GameObject.cpp.s:
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/object/GameObject.cpp.s
 .PHONY : object/GameObject.cpp.s
 
-scene/Scene.obj: scene/Scene.cpp.obj
-
-.PHONY : scene/Scene.obj
-
-# target to build an object file
-scene/Scene.cpp.obj:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/scene/Scene.cpp.obj
-.PHONY : scene/Scene.cpp.obj
-
-scene/Scene.i: scene/Scene.cpp.i
-
-.PHONY : scene/Scene.i
-
-# target to preprocess a source file
-scene/Scene.cpp.i:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/scene/Scene.cpp.i
-.PHONY : scene/Scene.cpp.i
-
-scene/Scene.s: scene/Scene.cpp.s
-
-.PHONY : scene/Scene.s
-
-# target to generate assembly for a file
-scene/Scene.cpp.s:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/scene/Scene.cpp.s
-.PHONY : scene/Scene.cpp.s
-
-scene/TestScene.obj: scene/TestScene.cpp.obj
-
-.PHONY : scene/TestScene.obj
-
-# target to build an object file
-scene/TestScene.cpp.obj:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/scene/TestScene.cpp.obj
-.PHONY : scene/TestScene.cpp.obj
-
-scene/TestScene.i: scene/TestScene.cpp.i
-
-.PHONY : scene/TestScene.i
-
-# target to preprocess a source file
-scene/TestScene.cpp.i:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/scene/TestScene.cpp.i
-.PHONY : scene/TestScene.cpp.i
-
-scene/TestScene.s: scene/TestScene.cpp.s
-
-.PHONY : scene/TestScene.s
-
-# target to generate assembly for a file
-scene/TestScene.cpp.s:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/scene/TestScene.cpp.s
-.PHONY : scene/TestScene.cpp.s
-
 system/Display.obj: system/Display.cpp.obj
 
 .PHONY : system/Display.obj
@@ -683,6 +629,33 @@ system/Display.s: system/Display.cpp.s
 system/Display.cpp.s:
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/system/Display.cpp.s
 .PHONY : system/Display.cpp.s
+
+system/FileManager.obj: system/FileManager.cpp.obj
+
+.PHONY : system/FileManager.obj
+
+# target to build an object file
+system/FileManager.cpp.obj:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/system/FileManager.cpp.obj
+.PHONY : system/FileManager.cpp.obj
+
+system/FileManager.i: system/FileManager.cpp.i
+
+.PHONY : system/FileManager.i
+
+# target to preprocess a source file
+system/FileManager.cpp.i:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/system/FileManager.cpp.i
+.PHONY : system/FileManager.cpp.i
+
+system/FileManager.s: system/FileManager.cpp.s
+
+.PHONY : system/FileManager.s
+
+# target to generate assembly for a file
+system/FileManager.cpp.s:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/system/FileManager.cpp.s
+.PHONY : system/FileManager.cpp.s
 
 system/Input.obj: system/Input.cpp.obj
 
@@ -819,33 +792,6 @@ thread/ThreadPool.cpp.s:
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/thread/ThreadPool.cpp.s
 .PHONY : thread/ThreadPool.cpp.s
 
-utils/FileManager.obj: utils/FileManager.cpp.obj
-
-.PHONY : utils/FileManager.obj
-
-# target to build an object file
-utils/FileManager.cpp.obj:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/utils/FileManager.cpp.obj
-.PHONY : utils/FileManager.cpp.obj
-
-utils/FileManager.i: utils/FileManager.cpp.i
-
-.PHONY : utils/FileManager.i
-
-# target to preprocess a source file
-utils/FileManager.cpp.i:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/utils/FileManager.cpp.i
-.PHONY : utils/FileManager.cpp.i
-
-utils/FileManager.s: utils/FileManager.cpp.s
-
-.PHONY : utils/FileManager.s
-
-# target to generate assembly for a file
-utils/FileManager.cpp.s:
-	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f engine\CMakeFiles\engine.dir\build.make engine/CMakeFiles/engine.dir/utils/FileManager.cpp.s
-.PHONY : utils/FileManager.cpp.s
-
 utils/Utils.obj: utils/Utils.cpp.obj
 
 .PHONY : utils/Utils.obj
@@ -897,6 +843,9 @@ help:
 	@echo ... asset/Mesh.obj
 	@echo ... asset/Mesh.i
 	@echo ... asset/Mesh.s
+	@echo ... asset/Scene.obj
+	@echo ... asset/Scene.i
+	@echo ... asset/Scene.s
 	@echo ... asset/Shader.obj
 	@echo ... asset/Shader.i
 	@echo ... asset/Shader.s
@@ -915,9 +864,6 @@ help:
 	@echo ... component/MeshRender.obj
 	@echo ... component/MeshRender.i
 	@echo ... component/MeshRender.s
-	@echo ... component/MoveController.obj
-	@echo ... component/MoveController.i
-	@echo ... component/MoveController.s
 	@echo ... component/Transform.obj
 	@echo ... component/Transform.i
 	@echo ... component/Transform.s
@@ -933,15 +879,12 @@ help:
 	@echo ... object/GameObject.obj
 	@echo ... object/GameObject.i
 	@echo ... object/GameObject.s
-	@echo ... scene/Scene.obj
-	@echo ... scene/Scene.i
-	@echo ... scene/Scene.s
-	@echo ... scene/TestScene.obj
-	@echo ... scene/TestScene.i
-	@echo ... scene/TestScene.s
 	@echo ... system/Display.obj
 	@echo ... system/Display.i
 	@echo ... system/Display.s
+	@echo ... system/FileManager.obj
+	@echo ... system/FileManager.i
+	@echo ... system/FileManager.s
 	@echo ... system/Input.obj
 	@echo ... system/Input.i
 	@echo ... system/Input.s
@@ -957,9 +900,6 @@ help:
 	@echo ... thread/ThreadPool.obj
 	@echo ... thread/ThreadPool.i
 	@echo ... thread/ThreadPool.s
-	@echo ... utils/FileManager.obj
-	@echo ... utils/FileManager.i
-	@echo ... utils/FileManager.s
 	@echo ... utils/Utils.obj
 	@echo ... utils/Utils.i
 	@echo ... utils/Utils.s

@@ -3,7 +3,7 @@
 #define STB_IMAGE_IMPLEMENTATION
 
 #include <stb_image.h>
-#include "Utils.h"
+#include <utils/Utils.h>
 
 #ifdef __ANDROID__
 #include <glfm.h>

@@ -76,10 +76,24 @@ include fantasy/CMakeFiles/fantasy.dir/progress.make
 # Include the compile flags for this target's objects.
 include fantasy/CMakeFiles/fantasy.dir/flags.make
 
+fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.obj: fantasy/CMakeFiles/fantasy.dir/flags.make
+fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.obj: fantasy/CMakeFiles/fantasy.dir/includes_CXX.rsp
+fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.obj: ../fantasy/component/MoveController.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.obj"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\fantasy.dir\component\MoveController.cpp.obj -c D:\myprojects\c\Fantasy\fantasy\component\MoveController.cpp
+
+fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fantasy.dir/component/MoveController.cpp.i"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\fantasy\component\MoveController.cpp > CMakeFiles\fantasy.dir\component\MoveController.cpp.i
+
+fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fantasy.dir/component/MoveController.cpp.s"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\fantasy\component\MoveController.cpp -o CMakeFiles\fantasy.dir\component\MoveController.cpp.s
+
 fantasy/CMakeFiles/fantasy.dir/main.cpp.obj: fantasy/CMakeFiles/fantasy.dir/flags.make
 fantasy/CMakeFiles/fantasy.dir/main.cpp.obj: fantasy/CMakeFiles/fantasy.dir/includes_CXX.rsp
 fantasy/CMakeFiles/fantasy.dir/main.cpp.obj: ../fantasy/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object fantasy/CMakeFiles/fantasy.dir/main.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object fantasy/CMakeFiles/fantasy.dir/main.cpp.obj"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\fantasy.dir\main.cpp.obj -c D:\myprojects\c\Fantasy\fantasy\main.cpp
 
 fantasy/CMakeFiles/fantasy.dir/main.cpp.i: cmake_force
@@ -90,14 +104,32 @@ fantasy/CMakeFiles/fantasy.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fantasy.dir/main.cpp.s"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\fantasy\main.cpp -o CMakeFiles\fantasy.dir\main.cpp.s
 
+fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj: fantasy/CMakeFiles/fantasy.dir/flags.make
+fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj: fantasy/CMakeFiles/fantasy.dir/includes_CXX.rsp
+fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj: ../fantasy/scene/TestScene.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles\fantasy.dir\scene\TestScene.cpp.obj -c D:\myprojects\c\Fantasy\fantasy\scene\TestScene.cpp
+
+fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/fantasy.dir/scene/TestScene.cpp.i"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\myprojects\c\Fantasy\fantasy\scene\TestScene.cpp > CMakeFiles\fantasy.dir\scene\TestScene.cpp.i
+
+fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/fantasy.dir/scene/TestScene.cpp.s"
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && C:\PROGRA~1\MINGW-~1\mingw64\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\myprojects\c\Fantasy\fantasy\scene\TestScene.cpp -o CMakeFiles\fantasy.dir\scene\TestScene.cpp.s
+
 # Object files for target fantasy
 fantasy_OBJECTS = \
-"CMakeFiles/fantasy.dir/main.cpp.obj"
+"CMakeFiles/fantasy.dir/component/MoveController.cpp.obj" \
+"CMakeFiles/fantasy.dir/main.cpp.obj" \
+"CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj"
 
 # External object files for target fantasy
 fantasy_EXTERNAL_OBJECTS =
 
+fantasy/fantasy.exe: fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.obj
 fantasy/fantasy.exe: fantasy/CMakeFiles/fantasy.dir/main.cpp.obj
+fantasy/fantasy.exe: fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj
 fantasy/fantasy.exe: fantasy/CMakeFiles/fantasy.dir/build.make
 fantasy/fantasy.exe: engine/libengine.a
 fantasy/fantasy.exe: 3rd/stb/libstb.a
@@ -106,7 +138,7 @@ fantasy/fantasy.exe: 3rd/glfw/src/libglfw3.a
 fantasy/fantasy.exe: fantasy/CMakeFiles/fantasy.dir/linklibs.rsp
 fantasy/fantasy.exe: fantasy/CMakeFiles/fantasy.dir/objects1.rsp
 fantasy/fantasy.exe: fantasy/CMakeFiles/fantasy.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable fantasy.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=D:\myprojects\c\Fantasy\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable fantasy.exe"
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug\fantasy && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\fantasy.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

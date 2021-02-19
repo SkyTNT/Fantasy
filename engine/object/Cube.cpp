@@ -1,7 +1,7 @@
 #include "Cube.h"
-#include "../component/MeshFilter.h"
-#include "../component/MeshRender.h"
-#include "../asset/AssetsManager.h"
+#include <component/MeshFilter.h>
+#include <component/MeshRender.h>
+#include <asset/AssetsManager.h>
 
 Cube::Cube() {
     auto meshFilter = new MeshFilter();

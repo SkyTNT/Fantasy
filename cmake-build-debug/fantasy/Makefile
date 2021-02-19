@@ -144,6 +144,33 @@ fantasy/fast:
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/build
 .PHONY : fantasy/fast
 
+component/MoveController.obj: component/MoveController.cpp.obj
+
+.PHONY : component/MoveController.obj
+
+# target to build an object file
+component/MoveController.cpp.obj:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.obj
+.PHONY : component/MoveController.cpp.obj
+
+component/MoveController.i: component/MoveController.cpp.i
+
+.PHONY : component/MoveController.i
+
+# target to preprocess a source file
+component/MoveController.cpp.i:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.i
+.PHONY : component/MoveController.cpp.i
+
+component/MoveController.s: component/MoveController.cpp.s
+
+.PHONY : component/MoveController.s
+
+# target to generate assembly for a file
+component/MoveController.cpp.s:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/component/MoveController.cpp.s
+.PHONY : component/MoveController.cpp.s
+
 main.obj: main.cpp.obj
 
 .PHONY : main.obj
@@ -171,6 +198,33 @@ main.cpp.s:
 	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+scene/TestScene.obj: scene/TestScene.cpp.obj
+
+.PHONY : scene/TestScene.obj
+
+# target to build an object file
+scene/TestScene.cpp.obj:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.obj
+.PHONY : scene/TestScene.cpp.obj
+
+scene/TestScene.i: scene/TestScene.cpp.i
+
+.PHONY : scene/TestScene.i
+
+# target to preprocess a source file
+scene/TestScene.cpp.i:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.i
+.PHONY : scene/TestScene.cpp.i
+
+scene/TestScene.s: scene/TestScene.cpp.s
+
+.PHONY : scene/TestScene.s
+
+# target to generate assembly for a file
+scene/TestScene.cpp.s:
+	cd /d D:\myprojects\c\Fantasy\cmake-build-debug && $(MAKE) $(MAKESILENT) -f fantasy\CMakeFiles\fantasy.dir\build.make fantasy/CMakeFiles/fantasy.dir/scene/TestScene.cpp.s
+.PHONY : scene/TestScene.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -180,9 +234,15 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... fantasy
+	@echo ... component/MoveController.obj
+	@echo ... component/MoveController.i
+	@echo ... component/MoveController.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... scene/TestScene.obj
+	@echo ... scene/TestScene.i
+	@echo ... scene/TestScene.s
 .PHONY : help
 
 
