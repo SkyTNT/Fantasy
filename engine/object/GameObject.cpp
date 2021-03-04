@@ -33,3 +33,4 @@ void GameObject::addChild(GameObject *child) {
     child->parent= this;
     children.push_back(child);
 }
+

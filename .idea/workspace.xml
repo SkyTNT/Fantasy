@@ -52,11 +52,6 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.fantasy">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="engine" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Fantasy" TARGET_NAME="engine" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -82,11 +77,6 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="GradleAppRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.cpp.gradle.execution.GradleNativeBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="CMake Application.glad" />
       <item itemvalue="CMake Application.glfw" />
@@ -106,6 +96,11 @@
       <workItem from="1613555166834" duration="2815000" />
       <workItem from="1613608885303" duration="7910000" />
       <workItem from="1613696567781" duration="11122000" />
+      <workItem from="1613781346434" duration="4344000" />
+      <workItem from="1613903711295" duration="3369000" />
+      <workItem from="1614072175574" duration="3460000" />
+      <workItem from="1614127036838" duration="11046000" />
+      <workItem from="1614302567837" duration="10559000" />
     </task>
     <servers />
   </component>

@@ -14,7 +14,7 @@ public:
 
 private:
     Transform *transform = nullptr;
-    glm::vec3 move = {0,0,0};
+    glm::vec3 move = {0,0,0},forward={0,0,0};
     float pitch = 0,yaw = 0;
 
 };
